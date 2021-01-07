@@ -288,32 +288,6 @@
         }
       }
     },
-    "common-ui-e2e": {
-      "root": "apps/common-ui-e2e",
-      "sourceRoot": "apps/common-ui-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/common-ui-e2e/cypress.json",
-            "tsConfig": "apps/common-ui-e2e/tsconfig.e2e.json",
-            "devServerTarget": "common-ui:storybook"
-          },
-          "configurations": {
-            "ci": {
-              "devServerTarget": "common-ui:storybook:ci"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/common-ui-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "core": {
       "root": "libs/core",
       "sourceRoot": "libs/core/src",

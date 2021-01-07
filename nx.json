@@ -46,10 +46,6 @@
     "common-ui": {
       "tags": []
     },
-    "common-ui-e2e": {
-      "tags": [],
-      "implicitDependencies": ["common-ui"]
-    },
     "core": {
       "tags": []
     }
