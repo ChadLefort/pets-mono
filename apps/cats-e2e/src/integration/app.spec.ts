@@ -1,13 +1,13 @@
-import { getGreeting } from '../support/app.po';
+import { getToolbarAppName } from '../support/app.po';
 
 describe('cats', () => {
-  beforeEach(() => cy.visit('/'));
+  beforeEach(() => {
+    cy.visit('/');
+    cy.route2('GET', 'api/auth', { fixture: 'auth.json' });
+    cy.route2('GET', 'api/pets', { fixture: 'pets.json' });
+  });
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to cats!');
+  it('should contain app name in toolbar', () => {
+    getToolbarAppName().contains('Cats');
   });
 });

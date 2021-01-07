@@ -73,7 +73,9 @@ export const Layout: React.FC<Props> = ({ title, children }) => {
         <AppBar position="static">
           <Toolbar>
             <div className={classes.nav}>
-              <Typography display="inline">{title}</Typography>
+              <Typography component="h1" display="inline">
+                {title}
+              </Typography>
               <Button
                 classes={{ root: classes.button }}
                 activeStyle={{
