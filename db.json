@@ -1,0 +1,25 @@
+{
+  "auth": {
+    "ssoToken": "fb570139-ad6c-4f6d-a0d9-611528f23ba7"
+  },
+  "pets": [
+    {
+      "id": 1,
+      "name": "Pat",
+      "age": "7",
+      "type": "Cat"
+    },
+    {
+      "id": 2,
+      "name": "Daisy",
+      "age": "14",
+      "type": "Dog"
+    },
+    {
+      "id": 3,
+      "name": "Spotty",
+      "age": "10",
+      "type": "Dog"
+    }
+  ]
+}

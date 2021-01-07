@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],
+      "@pets/core": ["../../../libs/core/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
