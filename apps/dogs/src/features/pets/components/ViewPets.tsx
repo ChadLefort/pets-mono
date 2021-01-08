@@ -1,11 +1,10 @@
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import React from 'react';
+import { deletePet, getPets } from '../api';
 import { ErrorIcon } from '@pets/common-ui';
 import { Link } from 'react-router-dom';
-import { removePet } from '../slice';
-import { useAppDispatch } from 'app/reducer';
-import { useFetchPets } from '../hooks/useFetchPets';
+import { useMutation, useQuery, useQueryCache } from 'react-query';
 import {
   Button,
   Container,
@@ -43,17 +42,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ViewPets: React.FC = () => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
-  const remove = (id: number) => () => dispatch(removePet(id));
-  const { pets, isFetching, error } = useFetchPets();
+  const cache = useQueryCache();
+  const { data: pets, isLoading, error } = useQuery('pets', getPets);
+  const [removePet] = useMutation(deletePet, {
+    onSuccess: () => cache.invalidateQueries('pets'),
+  });
 
-  return pets.length && !isFetching && !error ? (
+  return pets?.length && !isLoading && !error ? (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Type</TableCell>
             <TableCell align="right">Age</TableCell>
             <TableCell align="right" />
           </TableRow>
@@ -62,11 +62,14 @@ export const ViewPets: React.FC = () => {
           {pets.map((pet) => (
             <TableRow key={pet.id}>
               <TableCell component="th" scope="row">
-                <MuiLink component={Link} to={`/${pet.id}`}>
+                <MuiLink
+                  component={Link}
+                  color="textSecondary"
+                  to={`/${pet.id}`}
+                >
                   {pet.name}
                 </MuiLink>
               </TableCell>
-              <TableCell>{pet.type}</TableCell>
               <TableCell align="right">{pet.age}</TableCell>
               <TableCell align="right">
                 <IconButton component={Link} to={`edit/${pet.id}`}>
@@ -74,7 +77,7 @@ export const ViewPets: React.FC = () => {
                 </IconButton>
                 <IconButton
                   data-testid={`${pet.name}-delete`}
-                  onClick={remove(pet.id)}
+                  onClick={() => removePet(pet.id)}
                 >
                   <DeleteIcon />
                 </IconButton>
@@ -84,7 +87,7 @@ export const ViewPets: React.FC = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  ) : pets.length === 0 && !isFetching && !error ? (
+  ) : pets?.length === 0 && !isLoading && !error ? (
     <Paper className={classes.paper}>
       <Grid container spacing={4}>
         <Grid item xs={12} classes={{ root: classes.item }}>

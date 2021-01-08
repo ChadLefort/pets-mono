@@ -1,11 +1,10 @@
 import React from 'react';
-import { ErrorIcon } from '@pets/common-ui';
+import { ErrorIcon, PetForm } from '@pets/common-ui';
 import { IPet } from '../interfaces';
-import { PetForm } from './Form';
-import { petsSelectors, updatePet } from '../slice';
-import { useAppDispatch, useTypedSelector } from 'app/reducer';
-import { useFetchPets } from '../hooks/useFetchPets';
+import { putPet } from '../api';
+import { useFetchPet } from '../hooks/useFetchPet';
 import { useHistory, useParams } from 'react-router-dom';
+import { useMutation, useQueryCache } from 'react-query';
 import {
   Container,
   createStyles,
@@ -30,25 +29,28 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const EditPet: React.FC = () => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const history = useHistory();
-  const { isFetching, error } = useFetchPets();
+  const cache = useQueryCache();
   const { id } = useParams<{ id: string }>();
-  const pet = useTypedSelector((state) => petsSelectors.selectById(state, id));
+  const { pet, isLoading, error } = useFetchPet(id);
+  const [updatePet] = useMutation(putPet, {
+    onSuccess: () => cache.invalidateQueries('pets'),
+  });
 
   const onSubmit = (values: IPet) =>
     new Promise<void>((resolve, reject) => {
-      try {
-        dispatch(updatePet(values));
-        history.push('/');
-        resolve();
-      } catch (error) {
-        console.error(error);
-        reject(error);
-      }
+      (async () => {
+        try {
+          await updatePet(values);
+          history.push('/');
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      })();
     });
 
-  return pet && !isFetching && !error ? (
+  return pet && !isLoading && !error ? (
     <Paper className={classes.paper}>
       <Grid container justify="center" spacing={4}>
         <Grid item xs={12}>

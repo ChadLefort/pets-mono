@@ -1,4 +1,4 @@
-export * from './lib/common.slice';
-export * from './lib/auth.slice';
+export * from './slices/common.slice';
+export * from './slices/auth.slice';
 export * from './components/Auth';
-export * from './lib/reducer';
+export * from './slices/reducer';

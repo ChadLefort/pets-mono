@@ -1,7 +1,7 @@
 import React from 'react';
 import { addPet } from '../slice';
 import { IPet } from '../interfaces';
-import { PetForm } from './Form';
+import { PetForm } from '@pets/common-ui';
 import { useAppDispatch } from 'app/reducer';
 import { useHistory } from 'react-router-dom';
 import {
@@ -32,7 +32,7 @@ export const AddPets: React.FC = () => {
   const onSubmit = (values: IPet) =>
     new Promise<void>((resolve, reject) => {
       try {
-        dispatch(addPet(values));
+        dispatch(addPet({ ...values, type: 'Cat' }));
         history.push('/');
         resolve();
       } catch (error) {

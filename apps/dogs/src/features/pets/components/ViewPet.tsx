@@ -1,9 +1,7 @@
 import React from 'react';
 import { ErrorIcon } from '@pets/common-ui';
-import { petsSelectors } from '../slice';
-import { useFetchPets } from '../hooks/useFetchPets';
+import { useFetchPet } from '../hooks/useFetchPet';
 import { useParams } from 'react-router-dom';
-import { useTypedSelector } from 'app/reducer';
 import {
   Container,
   createStyles,
@@ -31,11 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ViewPet: React.FC = () => {
   const classes = useStyles();
-  const { isFetching, error } = useFetchPets();
   const { id } = useParams<{ id: string }>();
-  const pet = useTypedSelector((state) => petsSelectors.selectById(state, id));
+  const { pet, isLoading, error } = useFetchPet(id);
 
-  return pet && !isFetching && !error ? (
+  return pet && !isLoading && !error ? (
     <Paper className={classes.paper}>
       <List className={classes.list}>
         <ListItem>
@@ -43,9 +40,6 @@ export const ViewPet: React.FC = () => {
         </ListItem>
         <ListItem>
           <ListItemText primary="Age" secondary={pet.age} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Type" secondary={pet.type} />
         </ListItem>
       </List>
     </Paper>

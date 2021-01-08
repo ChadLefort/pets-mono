@@ -53,7 +53,6 @@ export const ViewPets: React.FC = () => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Type</TableCell>
             <TableCell align="right">Age</TableCell>
             <TableCell align="right" />
           </TableRow>
@@ -62,11 +61,14 @@ export const ViewPets: React.FC = () => {
           {pets.map((pet) => (
             <TableRow key={pet.id}>
               <TableCell component="th" scope="row">
-                <MuiLink component={Link} to={`/${pet.id}`}>
+                <MuiLink
+                  component={Link}
+                  color="textSecondary"
+                  to={`/${pet.id}`}
+                >
                   {pet.name}
                 </MuiLink>
               </TableCell>
-              <TableCell>{pet.type}</TableCell>
               <TableCell align="right">{pet.age}</TableCell>
               <TableCell align="right">
                 <IconButton component={Link} to={`edit/${pet.id}`}>

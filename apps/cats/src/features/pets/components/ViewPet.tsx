@@ -44,9 +44,6 @@ export const ViewPet: React.FC = () => {
         <ListItem>
           <ListItemText primary="Age" secondary={pet.age} />
         </ListItem>
-        <ListItem>
-          <ListItemText primary="Type" secondary={pet.type} />
-        </ListItem>
       </List>
     </Paper>
   ) : error ? (

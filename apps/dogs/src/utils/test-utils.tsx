@@ -2,6 +2,7 @@ import React from 'react';
 import { configureStore, DeepPartial, Dispatch } from '@reduxjs/toolkit';
 import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
+import { QueryCache, ReactQueryCacheProvider } from 'react-query';
 import { reducer } from 'app/reducer';
 import { RootState, store as origStore } from 'app/store';
 import { Router } from 'react-router-dom';
@@ -28,10 +29,14 @@ function configureTestStore(initialState: DeepPartial<RootState> = {}) {
 }
 
 type Params = {
-  initialState: DeepPartial<RootState>;
+  initialState?: DeepPartial<RootState>;
   initialEntries?: string[];
   store?: ReturnType<typeof configureTestStore>;
 } & RenderOptions;
+
+export const queryCache = new QueryCache({
+  defaultConfig: { queries: { retry: 0 } },
+});
 
 export function renderWithProviders(
   ui: React.ReactElement,
@@ -45,7 +50,9 @@ export function renderWithProviders(
   const history = createMemoryHistory({ initialEntries });
   const Wrapper: React.FC = ({ children }) => (
     <Provider store={store}>
-      <Router history={history}>{children}</Router>
+      <ReactQueryCacheProvider queryCache={queryCache}>
+        <Router history={history}>{children}</Router>
+      </ReactQueryCacheProvider>
     </Provider>
   );
 

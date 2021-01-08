@@ -18,8 +18,20 @@
     {
       "id": 3,
       "name": "Spotty",
-      "age": "10",
+      "age": "8",
       "type": "Dog"
+    },
+    {
+      "name": "PT",
+      "age": "7",
+      "type": "Dog",
+      "id": 4
+    },
+    {
+      "name": "Chloe",
+      "age": "8",
+      "type": "Cat",
+      "id": 5
     }
   ]
 }

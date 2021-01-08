@@ -1,7 +1,6 @@
 import React from 'react';
-import { ErrorIcon } from '@pets/common-ui';
+import { ErrorIcon, PetForm } from '@pets/common-ui';
 import { IPet } from '../interfaces';
-import { PetForm } from './Form';
 import { petsSelectors, updatePet } from '../slice';
 import { useAppDispatch, useTypedSelector } from 'app/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';

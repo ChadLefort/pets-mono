@@ -32,9 +32,6 @@ describe('add pets', () => {
         target: { value: 'Pat' },
       });
       fireEvent.change(screen.getByTestId('age'), { target: { value: '7' } });
-      fireEvent.change(screen.getByTestId('type'), {
-        target: { value: 'Cat' },
-      });
       fireEvent.click(screen.getByText('Submit'));
 
       return store;

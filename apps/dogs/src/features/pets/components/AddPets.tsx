@@ -1,9 +1,9 @@
 import React from 'react';
-import { addPet } from '../slice';
 import { IPet } from '../interfaces';
-import { PetForm } from './Form';
-import { useAppDispatch } from 'app/reducer';
+import { PetForm } from '@pets/common-ui';
+import { postPet } from '../api';
 import { useHistory } from 'react-router-dom';
+import { useMutation, useQueryCache } from 'react-query';
 import {
   createStyles,
   Grid,
@@ -26,19 +26,23 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const AddPets: React.FC = () => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const history = useHistory();
+  const cache = useQueryCache();
+  const [addPet] = useMutation(postPet, {
+    onSuccess: () => cache.invalidateQueries('pets'),
+  });
 
   const onSubmit = (values: IPet) =>
     new Promise<void>((resolve, reject) => {
-      try {
-        dispatch(addPet(values));
-        history.push('/');
-        resolve();
-      } catch (error) {
-        console.error(error);
-        reject(error);
-      }
+      (async () => {
+        try {
+          await addPet({ ...values, type: 'Dog' });
+          history.push('/');
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      })();
     });
 
   return (

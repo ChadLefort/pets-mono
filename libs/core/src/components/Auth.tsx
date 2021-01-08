@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { fetchAuthToken } from '../lib/auth.slice';
+import { Box, Container, LinearProgress } from '@material-ui/core';
+import { ErrorIcon } from '@pets/common-ui';
+import { fetchAuthToken } from '../slices/auth.slice';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../lib/reducer';
+import { useTypedSelector } from '../slices/reducer';
 
 export const Auth: React.FC = ({ children }) => {
   const { isFetching, error } = useTypedSelector((state) => state.core.auth);
@@ -12,10 +14,14 @@ export const Auth: React.FC = ({ children }) => {
   }, []);
 
   return !isFetching ? (
-    <React.Fragment>{children}</React.Fragment>
+    (children as JSX.Element)
   ) : error ? (
-    <p>Error</p>
+    <ErrorIcon />
   ) : (
-    <p>Loading</p>
+    <Container>
+      <Box margin={2}>
+        <LinearProgress />
+      </Box>
+    </Container>
   );
 };

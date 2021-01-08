@@ -1,14 +1,12 @@
 import * as Yup from 'yup';
 import React from 'react';
 import { Form } from 'react-final-form';
-import { IPet } from '../interfaces';
-import { makeValidate, Select, TextField } from 'mui-rff';
+import { makeValidate, TextField } from 'mui-rff';
 import {
   Button,
   createStyles,
   Grid,
   makeStyles,
-  MenuItem,
   Theme,
 } from '@material-ui/core';
 
@@ -26,21 +24,23 @@ const useStyles = makeStyles((theme: Theme) =>
 const schema = Yup.object().shape({
   name: Yup.string().required('Name is a required field.'),
   age: Yup.string().required('Age is a required field.'),
-  type: Yup.string().required('Type is a required field.'),
 });
 
 const validate = makeValidate(schema);
 
-type Props = {
-  initialValues?: IPet;
-  onSubmit: (values: IPet) => Promise<void>;
+type Props<T> = {
+  initialValues?: T;
+  onSubmit: (values: T) => Promise<void>;
 };
 
-export const PetForm: React.FC<Props> = ({ onSubmit, initialValues }) => {
+export function PetForm<T>({
+  onSubmit,
+  initialValues,
+}: React.PropsWithChildren<Props<T>>) {
   const classes = useStyles();
 
   return (
-    <Form<IPet>
+    <Form<T>
       onSubmit={onSubmit}
       validate={validate}
       initialValues={initialValues}
@@ -68,19 +68,6 @@ export const PetForm: React.FC<Props> = ({ onSubmit, initialValues }) => {
                 inputProps={{ 'data-testid': 'age' }}
               />
             </Grid>
-            <Grid item xs={12}>
-              <Select
-                variant="outlined"
-                name="type"
-                label="Type"
-                required
-                inputProps={{ 'data-testid': 'type' }}
-              >
-                <MenuItem value="Cat">Cat</MenuItem>
-                <MenuItem value="Dog">Dog</MenuItem>
-                <MenuItem value="Other">Other</MenuItem>
-              </Select>
-            </Grid>
           </Grid>
           <Grid container>
             <Grid item xs={12}>
@@ -100,4 +87,4 @@ export const PetForm: React.FC<Props> = ({ onSubmit, initialValues }) => {
       )}
     </Form>
   );
-};
+}
