@@ -236,7 +236,7 @@
             "tsConfig": "libs/common-ui/tsconfig.lib.json",
             "project": "libs/common-ui/package.json",
             "entryFile": "libs/common-ui/src/index.ts",
-            "external": ["react", "react-dom"],
+            "external": ["react", "react-dom", "react-is"],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
