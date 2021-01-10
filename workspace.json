@@ -74,10 +74,7 @@
         "json-server": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "nx serve cats",
-              "./node_modules/.bin/json-server --watch ./db.json --routes ./routes.json --port 4000 --delay 1000"
-            ],
+            "commands": ["nx serve cats", "npm run json-server"],
             "parallel": true
           }
         }
@@ -182,10 +179,7 @@
         "json-server": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "nx serve dogs",
-              "./node_modules/.bin/json-server --watch ./db.json --routes ./routes.json --port 4000 --delay 1000"
-            ],
+            "commands": ["nx serve dogs", "npm run json-server"],
             "parallel": true
           }
         }

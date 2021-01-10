@@ -56,7 +56,7 @@ export const Theme: React.FC<Props> = ({ children, primaryColor }) => {
           main: prefersDarkMode ? grey[700] : grey[300],
         },
         background: {
-          default: prefersDarkMode ? grey['A400'] : grey[200],
+          default: prefersDarkMode ? grey['A400'] : grey[300],
           paper: prefersDarkMode ? grey[800] : grey[200],
         },
         text: {
