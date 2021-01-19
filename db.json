@@ -22,16 +22,22 @@
       "type": "Dog"
     },
     {
+      "id": 4,
       "name": "PT",
       "age": "7",
-      "type": "Dog",
-      "id": 4
+      "type": "Dog"
     },
     {
+      "id": 5,
       "name": "Chloe",
       "age": "8",
-      "type": "Cat",
-      "id": 5
+      "type": "Cat"
+    },
+    {
+      "id": 6,
+      "name": "Tweety",
+      "age": "3",
+      "type": "Bird"
     }
   ]
 }

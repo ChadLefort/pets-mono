@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/apps/dogs',
     '<rootDir>/libs/common-ui',
     '<rootDir>/libs/core',
+    '<rootDir>/apps/birds',
   ],
 };

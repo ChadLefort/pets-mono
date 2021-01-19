@@ -48,6 +48,13 @@
     },
     "core": {
       "tags": []
+    },
+    "birds": {
+      "tags": []
+    },
+    "birds-e2e": {
+      "tags": [],
+      "implicitDependencies": ["birds"]
     }
   }
 }
