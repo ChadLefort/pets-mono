@@ -1,40 +1,4 @@
 import { IPet } from '../interfaces/pet';
 
-export const petsFixture: IPet[] = [
-  {
-    id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
-    name: 'Pat',
-    age: '7',
-    type: 'Cat',
-  },
-  {
-    id: '56d35640-008b-4022-bb4a-ebba0c78f6b3',
-    name: 'Daisy',
-    age: '14',
-    type: 'Dog',
-  },
-  {
-    id: '7e92064c-d185-4b47-be77-4e7fc16c2739',
-    name: 'Spotty',
-    age: '10',
-    type: 'Dog',
-  },
-  {
-    id: 'ac275c75-c603-4c4f-ae89-fc8fe078d635',
-    name: 'PT',
-    age: '7',
-    type: 'Dog',
-  },
-  {
-    id: 'fd546b4e-747d-448f-abaf-b0d119bae119',
-    name: 'Chloe',
-    age: '8',
-    type: 'Cat',
-  },
-  {
-    id: 'bbe4a217-418e-4643-9cd6-5e731ab4a8fc',
-    name: 'Tweety',
-    age: '3',
-    type: 'Bird',
-  },
-];
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+export const petsFixture: IPet[] = require('./pets.json');

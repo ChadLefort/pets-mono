@@ -13,7 +13,6 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],

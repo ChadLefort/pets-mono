@@ -20,7 +20,7 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "json-server": "json-server --watch db.json --routes routes.json --port 4000 --delay 1000",
+    "json-server": "json-server ./tools/json-server/index.js --watch --routes ./tools/json-server/routes.json --port 4000 --delay 1000",
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",

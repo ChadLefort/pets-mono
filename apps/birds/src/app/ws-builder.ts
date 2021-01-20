@@ -6,8 +6,6 @@ import {
   WebSocketAction,
 } from 'features/pets/slice';
 
-export const connection = new WebSocket('ws://localhost:4200/api/ws/pets');
-
 export const callbacks = websocketBuilder()
   .add(
     WebSocketAction.NewPet,
