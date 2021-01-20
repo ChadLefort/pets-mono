@@ -20,7 +20,12 @@ const initialState: DeepPartial<RootState> = {
   pets: {
     ids: [1],
     entities: {
-      '1': { id: 1, name: 'Pat', age: '7', type: 'Cat' },
+      '1': {
+        id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
+        name: 'Pat',
+        age: '7',
+        type: 'Bird',
+      },
     },
     hasFetched: true,
     isFetching: false,
@@ -34,7 +39,12 @@ describe('edit pet', () => {
   });
 
   it('should call dispatch pets/updatePet action when form is submitted', async () => {
-    const updatedPet: IPet = { id: 1, name: 'Pat', age: '8', type: 'Cat' };
+    const updatedPet: IPet = {
+      id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
+      name: 'Pat',
+      age: '8',
+      type: 'Bird',
+    };
 
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
     axiosMock.onPut('/api/pets/1').reply(200, updatedPet);

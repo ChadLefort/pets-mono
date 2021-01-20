@@ -106,10 +106,10 @@ describe('pets reducer', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
 
     const newPet: IPet = {
-      id: 4,
+      id: '7e92064c-d185-4b47-be77-4e7fc16c2739',
       name: 'PT',
       age: '12',
-      type: 'Dog',
+      type: 'Bird',
     };
 
     const nextState = petsReducer(
@@ -142,7 +142,14 @@ describe('pets reducer', () => {
   test('pets/removePet/fulfilled', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
 
-    const nextState = petsReducer(prevState, removePet.fulfilled(1, '', 1));
+    const nextState = petsReducer(
+      prevState,
+      removePet.fulfilled(
+        '7e92064c-d185-4b47-be77-4e7fc16c2739',
+        '',
+        '7e92064c-d185-4b47-be77-4e7fc16c2739'
+      )
+    );
 
     expect(nextState.isFetching).toBeFalsy();
     expect(Object.values(nextState.entities)[0]).not.toEqual(petsFixture[0]);

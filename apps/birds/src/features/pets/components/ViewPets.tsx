@@ -1,9 +1,9 @@
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ErrorIcon } from '@pets/common-ui';
 import { Link } from 'react-router-dom';
-import { removePet } from '../slice';
+import { removePet, start } from '../slice';
 import { useAppDispatch } from 'app/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
 import {
@@ -44,8 +44,12 @@ const useStyles = makeStyles((theme: Theme) =>
 export const ViewPets: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const remove = (id: number) => () => dispatch(removePet(id));
+  const remove = (id: string) => () => dispatch(removePet(id));
   const { pets, isFetching, error } = useFetchPets();
+
+  useEffect(() => {
+    dispatch(start());
+  }, []);
 
   return pets.length && !isFetching && !error ? (
     <TableContainer component={Paper}>

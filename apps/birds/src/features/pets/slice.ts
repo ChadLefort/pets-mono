@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { error, isFetching, State } from '@pets/core';
+import { error, isFetching, State as CommonState } from '@pets/core';
 import { IPet } from './interfaces';
 import { RootState } from 'app/store';
 import {
@@ -7,6 +7,14 @@ import {
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
+
+export enum WebSocketAction {
+  Start = 'start',
+  Stop = 'stop',
+  NewPet = 'newPet',
+  NewPetSuccess = 'newPetSuccess',
+  NewTitle = 'newTitle',
+}
 
 const name = 'spa/birds/pets';
 
@@ -49,7 +57,7 @@ export const updatePet = createAsyncThunk(
 
 export const removePet = createAsyncThunk(
   `${name}/removePets`,
-  async (id: number) => {
+  async (id: string) => {
     await axios.delete(`/api/pets/${id}`);
     return id;
   }
@@ -63,16 +71,53 @@ export const petsSelectors = petsAdapter.getSelectors<RootState>(
   (state) => state.pets
 );
 
+type State = { hasStarted: boolean; title: string | null } & CommonState;
+
 export const initialState = petsAdapter.getInitialState<State>({
   hasFetched: false,
+  hasStarted: false,
   isFetching: false,
+  title: null,
   error: null,
 });
 
 const pets = createSlice({
   name,
   initialState,
-  reducers: {},
+  reducers: {
+    start: {
+      reducer: (state) => {
+        state.hasStarted = true;
+      },
+      prepare: () => ({
+        payload: {},
+        meta: {
+          ws: {
+            action: WebSocketAction.Start,
+          },
+        },
+      }),
+    },
+    stop: {
+      reducer: (state) => {
+        state.hasStarted = false;
+      },
+      prepare: () => ({
+        payload: {},
+        meta: {
+          ws: {
+            action: WebSocketAction.Stop,
+          },
+        },
+      }),
+    },
+    fetchNewPets(state, action) {
+      petsAdapter.addOne(state, action.payload);
+    },
+    fetchNewTitle(state, action) {
+      state.title = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPets.pending, isFetching)
@@ -106,4 +151,7 @@ const pets = createSlice({
   },
 });
 
-export const { reducer: petsReducer } = pets;
+export const {
+  actions: { start, stop, fetchNewPets, fetchNewTitle },
+  reducer: petsReducer,
+} = pets;

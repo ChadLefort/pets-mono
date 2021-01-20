@@ -1,7 +1,7 @@
 import React from 'react';
 import { Auth } from '@pets/core';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Layout } from '@pets/common-ui';
+import { Layout } from './Layout';
 import { Provider } from 'react-redux';
 import { red } from '@material-ui/core/colors';
 import { Routes } from './Routes';
@@ -13,7 +13,7 @@ export const App: React.FC = () => (
     <Router>
       <Theme primaryColor={red[400]}>
         <Auth>
-          <Layout title="Birds">
+          <Layout>
             <Routes />
           </Layout>
         </Auth>

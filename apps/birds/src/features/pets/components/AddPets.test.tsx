@@ -19,7 +19,12 @@ describe('add pets', () => {
   });
 
   it('should call dispatch pets/addPet action when form is submitted', async () => {
-    const newPet: IPet = { id: 1, name: 'Pat', age: '7', type: 'Cat' };
+    const newPet: IPet = {
+      id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
+      name: 'Pat',
+      age: '7',
+      type: 'Bird',
+    };
 
     axiosMock.onPost('/api/pets').reply(200, newPet);
 
