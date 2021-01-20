@@ -1,28 +1,20 @@
 import * as express from 'express';
 import * as expressWs from 'express-ws';
-import { auth } from './app/auth';
-import { pets } from './app/pets';
-import { websocketGateway } from './app/ws-gateway';
+import { auth } from './routes/auth';
+import { pets } from './routes/pets';
+import { ws } from './routes/ws';
 
-class App {
-  express: expressWs.Application;
+const port = process.env.port || 3333;
+const app = express();
 
-  constructor() {
-    const app = express();
-    const ws = expressWs(app);
-    const port = process.env.port || 3333;
+expressWs(app);
 
-    this.express = ws.app;
-    this.express.ws('/api/ws/pets', websocketGateway);
-    this.express.use('/api/auth', auth);
-    this.express.use('/api/pets', pets);
+app.use('/api/ws', ws());
+app.use('/api/auth', auth());
+app.use('/api/pets', pets());
 
-    const server = app.listen(port, () => {
-      console.log(`Listening on ${port}`);
-    });
+const server = app.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});
 
-    server.on('error', console.error);
-  }
-}
-
-export const app = new App();
+server.on('error', console.error);

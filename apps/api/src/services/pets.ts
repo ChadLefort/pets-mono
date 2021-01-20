@@ -1,6 +1,7 @@
 import * as faker from 'faker';
 import * as ws from 'ws';
 import { PetsWebSocketActions } from '@pets/types';
+
 export class Pets {
   private petInterval: NodeJS.Timeout;
   private titleInterval: NodeJS.Timeout;
@@ -30,7 +31,7 @@ export class Pets {
     }, 10000);
   }
 
-  stop(ws: ws) {
+  stop() {
     clearInterval(this.petInterval);
     clearInterval(this.titleInterval);
   }
