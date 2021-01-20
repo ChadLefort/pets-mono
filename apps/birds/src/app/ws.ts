@@ -1,5 +1,5 @@
-import { IPet } from 'features/pets/interfaces';
-import { websocketBuilder } from './ws-middleware';
+import { IPet } from '@pets/types';
+import { websocketBuilder } from '@pets/core';
 import {
   fetchNewPets,
   fetchNewTitle,

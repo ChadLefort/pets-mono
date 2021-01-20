@@ -4,7 +4,7 @@ import React from 'react';
 import { addPet, initialState } from '../slice';
 import { AddPets } from './AddPets';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet } from '../interfaces';
+import { IPet } from '@pets/types';
 import {
   actWithReturn,
   getActionResult,

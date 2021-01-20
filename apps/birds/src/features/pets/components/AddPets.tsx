@@ -1,6 +1,6 @@
 import React from 'react';
 import { addPet } from '../slice';
-import { IPet } from '../interfaces';
+import { IPet } from '@pets/types';
 import { PetForm } from '@pets/common-ui';
 import { useAppDispatch } from 'app/reducer';
 import { useHistory } from 'react-router-dom';

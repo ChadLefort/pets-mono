@@ -3,8 +3,7 @@ import configureStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
-import { IPet } from './interfaces';
-import { petsFixture } from './fixtures';
+import { IPet, petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
 import {
   addPet,
@@ -83,7 +82,9 @@ describe('pets reducer', () => {
     ); // second param requestID?
 
     expect(nextState.isFetching).toBeFalsy();
-    expect(Object.values(nextState.entities)).toEqual(petsFixture);
+    expect(Object.values(nextState.entities)).toEqual(
+      petsFixture.sort((a, b) => a.name.localeCompare(b.name))
+    );
     expect(nextState.error).toBeNull();
   });
 
@@ -106,10 +107,10 @@ describe('pets reducer', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
 
     const newPet: IPet = {
-      id: 4,
+      id: '8ee4eca1-c441-4cdb-8720-b2003d183568',
       name: 'PT',
       age: '12',
-      type: 'Dog',
+      type: 'Cat',
     };
 
     const nextState = petsReducer(
@@ -142,10 +143,19 @@ describe('pets reducer', () => {
   test('pets/removePet/fulfilled', () => {
     prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
 
-    const nextState = petsReducer(prevState, removePet.fulfilled(1, '', 1));
+    const nextState = petsReducer(
+      prevState,
+      removePet.fulfilled(
+        'fd546b4e-747d-448f-abaf-b0d119bae119',
+        '',
+        'fd546b4e-747d-448f-abaf-b0d119bae119'
+      )
+    );
 
     expect(nextState.isFetching).toBeFalsy();
-    expect(Object.values(nextState.entities)[0]).not.toEqual(petsFixture[0]);
+    expect(Object.values(nextState.entities)[0]).not.toEqual(
+      petsFixture.sort((a, b) => a.name.localeCompare(b.name))[0]
+    );
     expect(nextState.error).toBeNull();
   });
 

@@ -4,8 +4,8 @@ import React from 'react';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { EditPet } from './EditPet';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet } from '../interfaces';
-import { petsFixture } from '../fixtures';
+import { IPet } from '@pets/types';
+import { petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
 import { Route } from 'react-router-dom';
 import { updatePet } from '../slice';
@@ -18,9 +18,14 @@ import {
 const axiosMock = new MockAdapter(axios);
 const initialState: DeepPartial<RootState> = {
   pets: {
-    ids: [1],
+    ids: ['89222b2d-8d06-41ff-82cf-c989dd90de24'],
     entities: {
-      '1': { id: 1, name: 'Pat', age: '7', type: 'Cat' },
+      '89222b2d-8d06-41ff-82cf-c989dd90de24': {
+        id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
+        name: 'Pat',
+        age: '7',
+        type: 'Cat',
+      },
     },
     hasFetched: true,
     isFetching: false,
@@ -34,17 +39,24 @@ describe('edit pet', () => {
   });
 
   it('should call dispatch pets/updatePet action when form is submitted', async () => {
-    const updatedPet: IPet = { id: 1, name: 'Pat', age: '8', type: 'Cat' };
+    const updatedPet: IPet = {
+      id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
+      name: 'Pat',
+      age: '8',
+      type: 'Cat',
+    };
 
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
-    axiosMock.onPut('/api/pets/1').reply(200, updatedPet);
+    axiosMock
+      .onPut('/api/pets/89222b2d-8d06-41ff-82cf-c989dd90de24')
+      .reply(200, updatedPet);
 
     const store = await actWithReturn(async () => {
       const { store } = renderWithProviders(
         <Route path="/edit/:id" component={EditPet} />,
         {
           initialState,
-          initialEntries: ['/edit/1'],
+          initialEntries: ['/edit/89222b2d-8d06-41ff-82cf-c989dd90de24'],
         }
       );
 

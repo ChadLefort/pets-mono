@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorIcon, PetForm } from '@pets/common-ui';
-import { IPet } from '../interfaces';
+import { IPet } from '@pets/types';
 import { putPet } from '../api';
 import { useFetchPet } from '../hooks/useFetchPet';
 import { useHistory, useParams } from 'react-router-dom';

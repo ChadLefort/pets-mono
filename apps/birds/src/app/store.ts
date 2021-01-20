@@ -3,7 +3,7 @@ import { callbacks as websocketBuilder, connection } from './ws';
 import { configureStore } from '@reduxjs/toolkit';
 import { reducer } from './reducer';
 import { ThunkAction } from 'redux-thunk';
-import { websocketMiddleware } from './ws-middleware';
+import { websocketMiddleware } from '@pets/core';
 
 export const store = configureStore({
   reducer,

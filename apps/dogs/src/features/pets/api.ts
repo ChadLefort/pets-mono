@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IPet } from './interfaces';
+import { IPet } from '@pets/types';
 
 export const getPets = async () => {
   const { data } = await axios.get<IPet[]>('/api/pets', {
@@ -24,7 +24,7 @@ export const putPet = async (pet: IPet) => {
   return data;
 };
 
-export const deletePet = async (id: number) => {
+export const deletePet = async (id: string) => {
   await axios.delete(`/api/pets/${id}`);
   return id;
 };

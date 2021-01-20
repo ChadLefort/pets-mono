@@ -1,5 +1,6 @@
 import * as ws from 'ws';
 import { Pets } from './ws-pets';
+import { PetsWebSocketActions } from '@pets/types';
 
 export const websocketGateway = (ws: ws) => {
   const pets = new Pets();
@@ -10,10 +11,10 @@ export const websocketGateway = (ws: ws) => {
     console.log(req);
 
     switch (action) {
-      case 'start':
+      case PetsWebSocketActions.Start:
         pets.start(ws);
         break;
-      case 'stop':
+      case PetsWebSocketActions.Stop:
         pets.stop(ws);
         break;
     }

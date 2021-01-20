@@ -1,6 +1,6 @@
 {
   "fileServerFolder": ".",
-  "fixturesFolder": "./src/fixtures",
+  "fixturesFolder": "../../libs/types/src/fixtures",
   "integrationFolder": "./src/integration",
   "modifyObstructiveCode": false,
   "pluginsFile": "./src/plugins/index",

@@ -2,7 +2,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
 import { fetchPets, initialState } from '../slice';
-import { petsFixture } from '../fixtures';
+import { petsFixture } from '@pets/types';
 import { Route } from 'react-router-dom';
 import { ViewPet } from './ViewPet';
 import { waitForElementToBeRemoved } from '@testing-library/react';
@@ -26,7 +26,7 @@ describe('view pet', () => {
       <Route path="/:id" component={ViewPet} />,
       {
         initialState: { pets: initialState },
-        initialEntries: ['/1'],
+        initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24'],
       }
     );
 
@@ -49,7 +49,7 @@ describe('view pet', () => {
       <Route path="/:id" component={ViewPet} />,
       {
         initialState: { pets: initialState },
-        initialEntries: ['/1'],
+        initialEntries: ['/89222b2d-8d06-41ff-82cf-c989dd90de24'],
       }
     );
 

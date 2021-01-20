@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { error, isFetching, State as CommonState } from '@pets/core';
-import { IPet } from './interfaces';
+import { IPet } from '@pets/types';
 import { RootState } from 'app/store';
 import {
   createAsyncThunk,

@@ -4,7 +4,7 @@ import React from 'react';
 import { addPet, initialState } from '../slice';
 import { AddPets } from './AddPets';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet } from '../interfaces';
+import { IPet } from '@pets/types';
 import {
   actWithReturn,
   getActionResult,
@@ -19,7 +19,12 @@ describe('add pets', () => {
   });
 
   it('should call dispatch pets/addPet action when form is submitted', async () => {
-    const newPet: IPet = { id: 1, name: 'Pat', age: '7', type: 'Cat' };
+    const newPet: IPet = {
+      id: '8ee4eca1-c441-4cdb-8720-b2003d183568',
+      name: 'Pat',
+      age: '7',
+      type: 'Cat',
+    };
 
     axiosMock.onPost('/api/pets').reply(200, newPet);
 

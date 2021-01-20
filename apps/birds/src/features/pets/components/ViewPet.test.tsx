@@ -2,7 +2,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
 import { fetchPets, initialState } from '../slice';
-import { petsFixture } from '../fixtures';
+import { petsFixture } from '@pets/types';
 import { Route } from 'react-router-dom';
 import { ViewPet } from './ViewPet';
 import { waitForElementToBeRemoved } from '@testing-library/react';
@@ -26,7 +26,7 @@ describe('view pet', () => {
       <Route path="/:id" component={ViewPet} />,
       {
         initialState: { pets: initialState },
-        initialEntries: ['/1'],
+        initialEntries: ['/bbe4a217-418e-4643-9cd6-5e731ab4a8fc'],
       }
     );
 
@@ -34,8 +34,8 @@ describe('view pet', () => {
 
     await waitForElementToBeRemoved(() => screen.getByRole('progressbar'));
 
-    expect(screen.getByText(petsFixture[0].name)).toHaveTextContent(
-      petsFixture[0].name
+    expect(screen.getByText(petsFixture[5].name)).toHaveTextContent(
+      petsFixture[5].name
     );
 
     const { type } = await getActionResult(store.dispatch);
@@ -49,7 +49,7 @@ describe('view pet', () => {
       <Route path="/:id" component={ViewPet} />,
       {
         initialState: { pets: initialState },
-        initialEntries: ['/1'],
+        initialEntries: ['/bbe4a217-418e-4643-9cd6-5e731ab4a8fc'],
       }
     );
 

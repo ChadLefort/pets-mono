@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/libs/core',
     '<rootDir>/apps/birds',
     '<rootDir>/apps/api',
+    '<rootDir>/libs/types',
   ],
 };

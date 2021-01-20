@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { HooksWrapper } from 'utils/test-utils';
-import { petsFixture } from '../fixtures';
+import { petsFixture } from '@pets/types';
 import { renderHook } from '@testing-library/react-hooks';
 import { useFetchPets } from './useFetchPets';
 

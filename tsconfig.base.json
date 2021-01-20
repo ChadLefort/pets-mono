@@ -13,10 +13,12 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],
-      "@pets/core": ["../../../libs/core/src/index.ts"]
+      "@pets/core": ["../../../libs/core/src/index.ts"],
+      "@pets/types": ["../../../libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

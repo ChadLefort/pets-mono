@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { petsFixture } from '../fixtures';
+import { petsFixture } from '@pets/types';
 import { queryCache, renderWithProviders } from 'utils/test-utils';
 import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import { ViewPets } from './ViewPets';

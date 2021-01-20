@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export const ViewPets: React.FC = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
-  const remove = (id: number) => () => dispatch(removePet(id));
+  const remove = (id: string) => () => dispatch(removePet(id));
   const { pets, isFetching, error } = useFetchPets();
 
   return pets.length && !isFetching && !error ? (

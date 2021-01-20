@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { error, isFetching, State } from '@pets/core';
-import { IPet } from './interfaces';
+import { IPet } from '@pets/types';
 import { RootState } from 'app/store';
 import {
   createAsyncThunk,
@@ -49,7 +49,7 @@ export const updatePet = createAsyncThunk(
 
 export const removePet = createAsyncThunk(
   `${name}/removePets`,
-  async (id: number) => {
+  async (id: string) => {
     await axios.delete(`/api/pets/${id}`);
     return id;
   }

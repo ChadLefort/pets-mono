@@ -1,5 +1,5 @@
 import React from 'react';
-import { IPet } from '../interfaces';
+import { IPet } from '@pets/types';
 import { PetForm } from '@pets/common-ui';
 import { postPet } from '../api';
 import { useHistory } from 'react-router-dom';

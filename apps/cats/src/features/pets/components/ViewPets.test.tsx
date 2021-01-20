@@ -3,8 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
 import { fetchPets, initialState, removePet } from '../slice';
 import { getActionResult, renderWithProviders, screen } from 'utils/test-utils';
-import { IPet } from '../interfaces';
-import { petsFixture } from '../fixtures';
+import { IPet, petsFixture } from '@pets/types';
 import { ViewPets } from './ViewPets';
 import {
   cleanup,
