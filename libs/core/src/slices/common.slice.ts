@@ -1,7 +1,6 @@
 import { PayloadAction, SerializedError } from '@reduxjs/toolkit';
 
 export type State = {
-  hasFetched: boolean;
   isFetching: boolean;
   error: SerializedError | null;
 };
@@ -22,4 +21,15 @@ export const error = <T>(
 ) => {
   state.isFetching = false;
   state.error = action.error;
+};
+
+export const condition = (state) => (_, { getState }) => {
+  const selectState = getState()[state];
+
+  if (Object.prototype.hasOwnProperty.call(selectState, 'isFetching')) {
+    const { isFetching } = selectState as State;
+    return !isFetching;
+  }
+
+  return undefined;
 };

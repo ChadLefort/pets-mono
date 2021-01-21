@@ -3,5 +3,4 @@ export enum PetsWebSocketActions {
   Stop = 'stop',
   NewPet = 'newPet',
   NewPetSuccess = 'newPetSuccess',
-  NewTitle = 'newTitle',
 }

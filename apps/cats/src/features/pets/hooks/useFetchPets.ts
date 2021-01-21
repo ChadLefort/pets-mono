@@ -5,16 +5,12 @@ import { useEffect } from 'react';
 
 export function useFetchPets() {
   const dispatch = useAppDispatch();
-  const { hasFetched, isFetching, error } = useTypedSelector(
-    (state) => state.pets
-  );
+  const { isFetching, error } = useTypedSelector((state) => state.pets);
   const pets = petsSelectors.selectAll(store.getState());
 
   useEffect(() => {
-    if (!hasFetched) {
-      dispatch(fetchPets());
-    }
-  }, []);
+    dispatch(fetchPets());
+  }, [dispatch]);
 
   return { pets, isFetching, error };
 }

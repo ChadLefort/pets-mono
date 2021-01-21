@@ -1,6 +1,6 @@
 import * as faker from 'faker';
 import * as ws from 'ws';
-import { PetsWebSocketActions } from '@pets/types';
+import { LayoutWebSocketActions, PetsWebSocketActions } from '@pets/types';
 
 export class Pets {
   private petInterval: NodeJS.Timeout;
@@ -24,7 +24,7 @@ export class Pets {
     this.titleInterval = setInterval(() => {
       ws.send(
         JSON.stringify({
-          action: PetsWebSocketActions.NewTitle,
+          action: LayoutWebSocketActions.NewTitle,
           payload: faker.random.word(),
         })
       );

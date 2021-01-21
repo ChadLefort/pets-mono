@@ -1,20 +1,17 @@
-import axios, { AxiosError } from 'axios';
-import { error, isFetching, State as CommonState } from '@pets/core';
-import { IPet } from '@pets/types';
+import axios from 'axios';
+import {
+  condition,
+  error,
+  isFetching,
+  State as CommonState
+  } from '@pets/core';
+import { IPet, PetsWebSocketActions } from '@pets/types';
 import { RootState } from 'app/store';
 import {
   createAsyncThunk,
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
-
-export enum WebSocketAction {
-  Start = 'start',
-  Stop = 'stop',
-  NewPet = 'newPet',
-  NewPetSuccess = 'newPetSuccess',
-  NewTitle = 'newTitle',
-}
 
 const name = 'spa/birds/pets';
 
@@ -24,23 +21,17 @@ export const fetchPets = createAsyncThunk<
   {
     rejectValue: string;
   }
->(`${name}/fetchPets`, async (_, { rejectWithValue }) => {
-  try {
+>(
+  `${name}/fetchPets`,
+  async () => {
     const { data } = await axios.get<IPet[]>('/api/pets', {
       params: { type: 'Bird' },
     });
 
     return data;
-  } catch (err) {
-    const error: AxiosError = err;
-
-    if (error.response?.status === 404) {
-      return rejectWithValue('pets not found');
-    } else {
-      throw error;
-    }
-  }
-});
+  },
+  { condition: condition('pets') }
+);
 
 export const addPet = createAsyncThunk(`${name}/addPet`, async (pet: IPet) => {
   const { data } = await axios.post<IPet>('/api/pets', pet);
@@ -71,13 +62,11 @@ export const petsSelectors = petsAdapter.getSelectors<RootState>(
   (state) => state.pets
 );
 
-type State = { hasStarted: boolean; title: string | null } & CommonState;
+type State = { hasStarted: boolean } & CommonState;
 
 export const initialState = petsAdapter.getInitialState<State>({
-  hasFetched: false,
   hasStarted: false,
   isFetching: false,
-  title: null,
   error: null,
 });
 
@@ -93,7 +82,7 @@ const pets = createSlice({
         payload: {},
         meta: {
           ws: {
-            action: WebSocketAction.Start,
+            action: PetsWebSocketActions.Start,
           },
         },
       }),
@@ -106,16 +95,13 @@ const pets = createSlice({
         payload: {},
         meta: {
           ws: {
-            action: WebSocketAction.Stop,
+            action: PetsWebSocketActions.Stop,
           },
         },
       }),
     },
     fetchNewPets(state, action) {
       petsAdapter.addOne(state, action.payload);
-    },
-    fetchNewTitle(state, action) {
-      state.title = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -125,7 +111,6 @@ const pets = createSlice({
       .addCase(updatePet.pending, isFetching)
       .addCase(removePet.pending, isFetching)
       .addCase(fetchPets.fulfilled, (state, action) => {
-        state.hasFetched = true;
         state.isFetching = false;
         petsAdapter.setAll(state, action.payload);
       })
@@ -152,6 +137,6 @@ const pets = createSlice({
 });
 
 export const {
-  actions: { start, stop, fetchNewPets, fetchNewTitle },
+  actions: { start, stop, fetchNewPets },
   reducer: petsReducer,
 } = pets;

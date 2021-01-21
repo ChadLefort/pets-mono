@@ -26,7 +26,6 @@ const initialState: DeepPartial<RootState> = {
         type: 'Bird',
       },
     },
-    hasFetched: true,
     isFetching: false,
     error: null,
   },
@@ -65,7 +64,7 @@ describe('edit pet', () => {
       return store;
     });
 
-    const { type, payload } = await getActionResult<IPet>(store.dispatch);
+    const { type, payload } = await getActionResult<IPet>(store.dispatch, 1);
 
     expect(type).toEqual(updatePet.fulfilled.type);
     expect(payload).toEqual(updatedPet);

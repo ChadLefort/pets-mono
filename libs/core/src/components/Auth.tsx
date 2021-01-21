@@ -6,14 +6,16 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../slices/reducer';
 
 export const Auth: React.FC = ({ children }) => {
-  const { isFetching, error } = useTypedSelector((state) => state.core.auth);
+  const { isFetching, ssoToken, error } = useTypedSelector(
+    (state) => state.core.auth
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchAuthToken());
-  }, []);
+  }, [dispatch]);
 
-  return !isFetching ? (
+  return !isFetching && ssoToken ? (
     (children as JSX.Element)
   ) : error ? (
     <ErrorIcon />

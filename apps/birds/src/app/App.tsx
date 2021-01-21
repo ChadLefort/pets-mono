@@ -1,7 +1,7 @@
 import React from 'react';
 import { Auth } from '@pets/core';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Layout } from './Layout';
+import { Layout } from 'features/components/Layout';
 import { Provider } from 'react-redux';
 import { red } from '@material-ui/core/colors';
 import { Routes } from './Routes';

@@ -1,21 +1,22 @@
-import { IPet } from '@pets/types';
+import { fetchNewPets } from 'features/pets/slice';
+import { fetchNewTitle } from 'features/layout/slice';
 import { websocketBuilder } from '@pets/core';
 import {
-  fetchNewPets,
-  fetchNewTitle,
-  WebSocketAction,
-} from 'features/pets/slice';
+  IPet,
+  PetsWebSocketActions,
+  LayoutWebSocketActions,
+} from '@pets/types';
 
 export const callbacks = websocketBuilder()
   .add(
-    WebSocketAction.NewPet,
+    PetsWebSocketActions.NewPet,
     (payload: IPet) => (dispatch, store, sendMessage) => {
       dispatch(fetchNewPets(payload));
-      sendMessage({ action: WebSocketAction.NewPetSuccess });
+      sendMessage({ action: PetsWebSocketActions.NewPetSuccess });
     }
   )
   .add(
-    WebSocketAction.NewTitle,
+    LayoutWebSocketActions.NewTitle,
     (payload: string) => (dispatch, store, sendMessage) => {
       dispatch(fetchNewTitle(payload));
     }

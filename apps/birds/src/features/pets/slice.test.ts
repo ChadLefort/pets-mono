@@ -47,7 +47,6 @@ describe('pets actions', () => {
     const actions = store.getActions();
 
     expect(actions[1].type).toEqual(fetchPets.rejected.type);
-    expect(actions[1].payload).toEqual('pets not found');
   });
 
   it('dipatches a failure action', async () => {

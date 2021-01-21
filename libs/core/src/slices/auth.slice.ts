@@ -15,7 +15,6 @@ export const fetchAuthToken = createAsyncThunk(
 type State = { ssoToken: string | null } & CommonState;
 
 export const initialState: State = {
-  hasFetched: false,
   isFetching: false,
   ssoToken: null,
   error: null,
