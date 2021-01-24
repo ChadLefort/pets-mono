@@ -1,9 +1,10 @@
 import { AnyAction, Dispatch, Middleware } from 'redux';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 type WebSocketAction<T = string> = {
   type: string;
-  payload: unknown;
-  meta?: { ws?: { action: T; payload: unknown } };
+  payload: any;
+  meta?: { ws?: { action: T; payload: any } };
 };
 
 type Params = {
@@ -11,23 +12,20 @@ type Params = {
   websocketBuilder: IWebSocketBuilder;
 };
 
-type Callback<D = unknown, S = unknown> = (
-  ...args: unknown[]
+type Callback<D = any, S = any> = (
+  ...args: any[]
 ) => (
   dispatch: D,
   getState: () => S,
-  sendMessage: (data: {
-    action: string;
-    payload?: unknown;
-  }) => WebSocket['send']
+  sendMessage: (data: { action: string; payload?: any }) => Promise<void>
 ) => void;
 
-interface IWebSocketBuilder<D = unknown, S = unknown> {
+interface IWebSocketBuilder<D = any, S = any> {
   add: (name: string, callback: Callback<D, S>) => IWebSocketBuilder<D, S>;
   callbackMap: Map<string, Callback<D, S>>;
 }
 
-export function websocketBuilder<D = Dispatch, S = unknown>() {
+export function websocketBuilder<D = Dispatch, S = any>() {
   const callbackMap = new Map<string, Callback<D, S>>();
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const moduleReducer = () => {};
@@ -54,7 +52,7 @@ const waitForOpenWebSocket = (ws: WebSocket) =>
     }
   });
 
-const sendMessage = async (ws: WebSocket, data: unknown) => {
+const sendMessage = async (ws: WebSocket, data: any) => {
   await waitForOpenWebSocket(ws);
   ws.send(JSON.stringify(data));
 };

@@ -26,14 +26,12 @@ const schema = Yup.object().shape({
   age: Yup.string().required('Age is a required field.'),
 });
 
-const validate = makeValidate(schema);
-
 type Props<T> = {
   initialValues?: T;
   onSubmit: (values: T) => Promise<void>;
 };
 
-export function PetForm<T>({
+export function PetForm<T extends { name: string; age: string }>({
   onSubmit,
   initialValues,
 }: React.PropsWithChildren<Props<T>>) {
@@ -42,7 +40,7 @@ export function PetForm<T>({
   return (
     <Form<T>
       onSubmit={onSubmit}
-      validate={validate}
+      validate={makeValidate(schema)}
       initialValues={initialValues}
     >
       {({ handleSubmit, invalid }) => (

@@ -23,7 +23,8 @@ export const error = <T>(
   state.error = action.error;
 };
 
-export const condition = (state) => (_, { getState }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const condition = (state: string) => (_: never, { getState }: any) => {
   const selectState = getState()[state];
 
   if (Object.prototype.hasOwnProperty.call(selectState, 'isFetching')) {

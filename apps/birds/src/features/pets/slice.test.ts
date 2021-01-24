@@ -3,6 +3,7 @@ import configureStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
+import { DeepPartial } from '@reduxjs/toolkit';
 import { IPet, petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
 import {
@@ -14,8 +15,8 @@ import {
 } from './slice';
 
 const mockStore = configureStore<
-  RootState,
-  ThunkDispatch<RootState, unknown, Action<string>>
+  DeepPartial<RootState>,
+  ThunkDispatch<DeepPartial<RootState>, unknown, Action<string>>
 >([thunk]);
 const store = mockStore({ pets: initialState });
 let prevState: typeof initialState;

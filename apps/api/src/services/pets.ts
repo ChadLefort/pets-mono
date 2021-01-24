@@ -3,8 +3,8 @@ import * as ws from 'ws';
 import { LayoutWebSocketActions, PetsWebSocketActions } from '@pets/types';
 
 export class Pets {
-  private petInterval: NodeJS.Timeout;
-  private titleInterval: NodeJS.Timeout;
+  private petInterval?: NodeJS.Timeout;
+  private titleInterval?: NodeJS.Timeout;
 
   start(ws: ws) {
     this.petInterval = setInterval(() => {
@@ -32,7 +32,7 @@ export class Pets {
   }
 
   stop() {
-    clearInterval(this.petInterval);
-    clearInterval(this.titleInterval);
+    this.petInterval && clearInterval(this.petInterval);
+    this.titleInterval && clearInterval(this.titleInterval);
   }
 }
