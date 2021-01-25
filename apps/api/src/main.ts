@@ -4,7 +4,7 @@ import { auth } from './routes/auth';
 import { pets } from './routes/pets';
 import { ws } from './routes/ws';
 
-const port = process.env.port || 3333;
+const port = process.env.port || 4000;
 const app = express();
 
 expressWs(app);

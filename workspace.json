@@ -90,7 +90,7 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "birds:build",
-            "proxyConfig": "apps/birds/proxy.conf.json"
+            "proxyConfig": "./proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -190,7 +190,7 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "cats:build",
-            "proxyConfig": "./proxy.config.json"
+            "proxyConfig": "./proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -290,7 +290,7 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "dogs:build",
-            "proxyConfig": "./proxy.config.json"
+            "proxyConfig": "./proxy.conf.json"
           },
           "configurations": {
             "production": {

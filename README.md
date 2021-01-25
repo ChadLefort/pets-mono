@@ -1,28 +1,8 @@
 # Pets Monorepo
 
-## Generate an application
+## Development server with JSON-server or Express
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are sharable across libraries and applications. They can be imported from `@pets/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Development server with JSON-server
-
-Run `nx run my-app:json-server` for a dev server to start with JSON-server. Navigate to http://localhost:4200/. The app and JSON-server will automatically reload if you change any of the source files.
+Run `nx run my-app:start` for a dev server to start with either JSON-server or Express. Navigate to http://localhost:4200/ for the app and http://localhost:4000/ for the api. The app will automatically reload if you change any of the source files and the api is automatically proxied to the app.
 
 ## Build
 
@@ -43,6 +23,22 @@ Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
 ## Understand your workspace
 
 Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+
+## Generate an application
+
+Run `nx generate my-app` to generate an application.
+
+> You can use any of the plugins above to generate applications as well.
+
+When using Nx, you can create multiple applications and libraries in the same workspace.
+
+## Generate a library
+
+Run `nx generate my-lib` to generate a library.
+
+> You can also use any of the plugins above to generate libraries as well.
+
+Libraries are sharable across libraries and applications. They can be imported from `@pets/mylib`.
 
 ## Further help
 

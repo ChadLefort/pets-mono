@@ -29,6 +29,16 @@
     }
   },
   "projects": {
+    "api": {
+      "tags": []
+    },
+    "birds": {
+      "tags": []
+    },
+    "birds-e2e": {
+      "tags": [],
+      "implicitDependencies": ["birds"]
+    },
     "cats": {
       "tags": []
     },
@@ -47,16 +57,6 @@
       "tags": []
     },
     "core": {
-      "tags": []
-    },
-    "birds": {
-      "tags": []
-    },
-    "birds-e2e": {
-      "tags": [],
-      "implicitDependencies": ["birds"]
-    },
-    "api": {
       "tags": []
     },
     "types": {
