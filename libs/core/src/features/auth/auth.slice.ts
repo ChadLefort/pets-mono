@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { error, isFetching, State as CommonState } from './common.slice';
+import {
+  error,
+  isFetching,
+  State as CommonState,
+} from '../../common/common.slice';
 
 const name = 'lib/core/auth';
 

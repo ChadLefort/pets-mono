@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Box, Container, LinearProgress } from '@material-ui/core';
 import { ErrorIcon } from '@pets/common-ui';
-import { fetchAuthToken } from '../slices/auth.slice';
+import { fetchAuthToken } from '../auth.slice';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '../slices/reducer';
+import { useTypedSelector } from '../../../common/reducer';
 
 export const Auth: React.FC = ({ children }) => {
   const { isFetching, ssoToken, error } = useTypedSelector(
