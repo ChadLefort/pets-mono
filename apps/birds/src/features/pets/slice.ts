@@ -13,7 +13,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 
-const name = 'spa/birds/pets';
+const name = 'app/birds/pets';
 
 export const fetchPets = createAsyncThunk<
   IPet[],

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { error, isFetching, State as CommonState } from './common.slice';
 
-const name = 'core/auth';
+const name = 'lib/core/auth';
 
 export const fetchAuthToken = createAsyncThunk(
   `${name}/fetchToken`,

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const name = 'spa/birds/layout';
+const name = 'app/birds/layout';
 
 type State = { title: string | null };
 
