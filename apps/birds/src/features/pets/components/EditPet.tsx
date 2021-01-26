@@ -5,25 +5,16 @@ import { petsSelectors, updatePet } from '../slice';
 import { useAppDispatch, useTypedSelector } from 'app/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
 import { useHistory, useParams } from 'react-router-dom';
-import {
-  Container,
-  createStyles,
-  Grid,
-  LinearProgress,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     button: {
-      margin: theme.spacing(2, 0),
-    },
+      margin: theme.spacing(2, 0)
+    }
   })
 );
 

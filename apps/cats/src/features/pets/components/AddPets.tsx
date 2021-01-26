@@ -4,23 +4,16 @@ import { IPet } from '@pets/types';
 import { PetForm } from '@pets/common-ui';
 import { useAppDispatch } from 'app/reducer';
 import { useHistory } from 'react-router-dom';
-import {
-  createStyles,
-  Grid,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     button: {
-      margin: theme.spacing(2, 0),
-    },
+      margin: theme.spacing(2, 0)
+    }
   })
 );
 

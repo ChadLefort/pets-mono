@@ -3,7 +3,7 @@ import { ErrorIcon } from './ErrorIcon';
 
 export default {
   component: ErrorIcon,
-  title: 'ErrorIcon',
+  title: 'ErrorIcon'
 };
 
 export const primary = () => {

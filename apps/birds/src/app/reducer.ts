@@ -11,5 +11,5 @@ export const useTypedSelector = createSelectorHook<RootState>();
 export const reducer = {
   core: combineReducers({ auth: authReducer }),
   layout: layoutReducer,
-  pets: petsReducer,
+  pets: petsReducer
 };

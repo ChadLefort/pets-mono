@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  act,
-  fireEvent,
-  render,
-  screen
-  } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { PetForm } from './Form';
 
 describe('pets form', () => {
@@ -15,7 +10,7 @@ describe('pets form', () => {
       render(<PetForm onSubmit={onSubmit} />);
 
       fireEvent.change(screen.getByTestId('name'), {
-        target: { value: 'Pat' },
+        target: { value: 'Pat' }
       });
       fireEvent.change(screen.getByTestId('age'), { target: { value: 7 } });
       fireEvent.click(screen.getByText('Submit'));
@@ -25,7 +20,7 @@ describe('pets form', () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
     expect(onSubmit.mock.calls[0][0]).toEqual({
       name: 'Pat',
-      age: '7',
+      age: '7'
     });
   });
 });

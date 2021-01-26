@@ -1,17 +1,8 @@
 import axios from 'axios';
-import {
-  condition,
-  error,
-  isFetching,
-  State
-  } from '@pets/core';
+import { condition, error, isFetching, State } from '@pets/core';
 import { IPet } from '@pets/types';
 import { RootState } from 'app/store';
-import {
-  createAsyncThunk,
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const name = 'app/cats/pets';
 
@@ -25,7 +16,7 @@ export const fetchPets = createAsyncThunk<
   `${name}/fetchPets`,
   async () => {
     const { data } = await axios.get<IPet[]>('/api/pets', {
-      params: { type: 'Cat' },
+      params: { type: 'Cat' }
     });
 
     return data;
@@ -38,33 +29,25 @@ export const addPet = createAsyncThunk(`${name}/addPet`, async (pet: IPet) => {
   return data;
 });
 
-export const updatePet = createAsyncThunk(
-  `${name}/updatePet`,
-  async (pet: IPet) => {
-    const { data } = await axios.put<IPet>(`/api/pets/${pet.id}`, pet);
-    return data;
-  }
-);
-
-export const removePet = createAsyncThunk(
-  `${name}/removePets`,
-  async (id: string) => {
-    await axios.delete(`/api/pets/${id}`);
-    return id;
-  }
-);
-
-export const petsAdapter = createEntityAdapter<IPet>({
-  sortComparer: (a, b) => a.name.localeCompare(b.name),
+export const updatePet = createAsyncThunk(`${name}/updatePet`, async (pet: IPet) => {
+  const { data } = await axios.put<IPet>(`/api/pets/${pet.id}`, pet);
+  return data;
 });
 
-export const petsSelectors = petsAdapter.getSelectors<RootState>(
-  (state) => state.pets
-);
+export const removePet = createAsyncThunk(`${name}/removePets`, async (id: string) => {
+  await axios.delete(`/api/pets/${id}`);
+  return id;
+});
+
+export const petsAdapter = createEntityAdapter<IPet>({
+  sortComparer: (a, b) => a.name.localeCompare(b.name)
+});
+
+export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets);
 
 export const initialState = petsAdapter.getInitialState<State>({
   isFetching: false,
-  error: null,
+  error: null
 });
 
 const pets = createSlice({
@@ -89,7 +72,7 @@ const pets = createSlice({
         state.isFetching = false;
         petsAdapter.updateOne(state, {
           id: action.payload.id,
-          changes: action.payload,
+          changes: action.payload
         });
       })
       .addCase(removePet.fulfilled, (state, action) => {
@@ -100,7 +83,7 @@ const pets = createSlice({
       .addCase(addPet.rejected, error)
       .addCase(updatePet.rejected, error)
       .addCase(removePet.rejected, error);
-  },
+  }
 });
 
 export const { reducer: petsReducer } = pets;

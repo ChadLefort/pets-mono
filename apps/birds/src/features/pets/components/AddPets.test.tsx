@@ -5,11 +5,7 @@ import { addPet, initialState } from '../slice';
 import { AddPets } from './AddPets';
 import { fireEvent, screen } from '@testing-library/react';
 import { IPet } from '@pets/types';
-import {
-  actWithReturn,
-  getActionResult,
-  renderWithProviders,
-} from 'utils/test-utils';
+import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-utils';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -23,18 +19,18 @@ describe('add pets', () => {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
       age: '7',
-      type: 'Bird',
+      type: 'Bird'
     };
 
     axiosMock.onPost('/api/pets').reply(200, newPet);
 
     const store = await actWithReturn(async () => {
       const { store } = renderWithProviders(<AddPets />, {
-        initialState: { pets: initialState },
+        initialState: { pets: initialState }
       });
 
       fireEvent.change(screen.getByTestId('name'), {
-        target: { value: 'Pat' },
+        target: { value: 'Pat' }
       });
       fireEvent.change(screen.getByTestId('age'), { target: { value: '7' } });
       fireEvent.click(screen.getByText('Submit'));

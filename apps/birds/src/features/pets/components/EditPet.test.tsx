@@ -8,11 +8,7 @@ import { IPet, petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
 import { Route } from 'react-router-dom';
 import { updatePet } from '../slice';
-import {
-  actWithReturn,
-  getActionResult,
-  renderWithProviders,
-} from 'utils/test-utils';
+import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-utils';
 
 const axiosMock = new MockAdapter(axios);
 const initialState: DeepPartial<RootState> = {
@@ -23,12 +19,12 @@ const initialState: DeepPartial<RootState> = {
         id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
         name: 'Pat',
         age: '7',
-        type: 'Bird',
-      },
+        type: 'Bird'
+      }
     },
     isFetching: false,
-    error: null,
-  },
+    error: null
+  }
 };
 
 describe('edit pet', () => {
@@ -41,22 +37,17 @@ describe('edit pet', () => {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
       age: '8',
-      type: 'Bird',
+      type: 'Bird'
     };
 
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
-    axiosMock
-      .onPut('/api/pets/89222b2d-8d06-41ff-82cf-c989dd90de24')
-      .reply(200, updatedPet);
+    axiosMock.onPut('/api/pets/89222b2d-8d06-41ff-82cf-c989dd90de24').reply(200, updatedPet);
 
     const store = await actWithReturn(async () => {
-      const { store } = renderWithProviders(
-        <Route path="/edit/:id" component={EditPet} />,
-        {
-          initialState,
-          initialEntries: ['/edit/89222b2d-8d06-41ff-82cf-c989dd90de24'],
-        }
-      );
+      const { store } = renderWithProviders(<Route path="/edit/:id" component={EditPet} />, {
+        initialState,
+        initialEntries: ['/edit/89222b2d-8d06-41ff-82cf-c989dd90de24']
+      });
 
       fireEvent.change(screen.getByTestId('age'), { target: { value: '8' } });
       fireEvent.click(screen.getByText('Submit'));

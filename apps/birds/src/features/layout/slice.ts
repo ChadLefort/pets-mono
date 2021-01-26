@@ -5,7 +5,7 @@ const name = 'app/birds/layout';
 type State = { title: string | null };
 
 export const initialState: State = {
-  title: null,
+  title: null
 };
 
 const layout = createSlice({
@@ -14,11 +14,11 @@ const layout = createSlice({
   reducers: {
     fetchNewTitle(state, action) {
       state.title = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const {
   actions: { fetchNewTitle },
-  reducer: layoutReducer,
+  reducer: layoutReducer
 } = layout;

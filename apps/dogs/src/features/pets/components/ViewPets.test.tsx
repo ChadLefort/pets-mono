@@ -23,9 +23,7 @@ describe('view pets', () => {
 
     await waitForElementToBeRemoved(() => screen.getByRole('progressbar'));
 
-    expect(screen.getByText(petsFixture[0].name)).toHaveTextContent(
-      petsFixture[0].name
-    );
+    expect(screen.getByText(petsFixture[0].name)).toHaveTextContent(petsFixture[0].name);
   });
 
   it('can show a loading bar and an error icon', async () => {

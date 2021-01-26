@@ -8,14 +8,10 @@ import { RootState, store as origStore } from 'app/store';
 import { Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import {
-  act,
-  render as rtlRender,
-  RenderOptions,
-} from '@testing-library/react';
+import { act, render as rtlRender, RenderOptions } from '@testing-library/react';
 
 jest.mock('app/store', () => ({
-  store: jest.fn(),
+  store: jest.fn()
 }));
 
 function configureTestStore(initialState: DeepPartial<RootState> = {}) {
@@ -35,17 +31,12 @@ type Params = {
 } & RenderOptions;
 
 export const queryCache = new QueryCache({
-  defaultConfig: { queries: { retry: 0 } },
+  defaultConfig: { queries: { retry: 0 } }
 });
 
 export function renderWithProviders(
   ui: React.ReactElement,
-  {
-    initialState,
-    initialEntries,
-    store = configureTestStore(initialState),
-    ...renderOptions
-  }: Params
+  { initialState, initialEntries, store = configureTestStore(initialState), ...renderOptions }: Params
 ) {
   const history = createMemoryHistory({ initialEntries });
   const Wrapper: React.FC = ({ children }) => (
@@ -59,13 +50,11 @@ export function renderWithProviders(
   return {
     ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }),
     store,
-    history,
+    history
   };
 }
 
-export async function actWithReturn<T = typeof origStore>(
-  callback: () => unknown
-) {
+export async function actWithReturn<T = typeof origStore>(callback: () => unknown) {
   let ret;
 
   await act(async () => {
@@ -75,10 +64,7 @@ export async function actWithReturn<T = typeof origStore>(
   return (ret as unknown) as T;
 }
 
-export async function getActionResult<T = unknown>(
-  dispatch: Dispatch,
-  action = 0
-) {
+export async function getActionResult<T = unknown>(dispatch: Dispatch, action = 0) {
   const mockDispatch = dispatch as jest.Mock;
   return (await mockDispatch.mock.results[action].value) as {
     type: string;
@@ -86,8 +72,6 @@ export async function getActionResult<T = unknown>(
   };
 }
 
-export const HooksWrapper: React.FC = ({ children }) => (
-  <Provider store={configureTestStore()}>{children}</Provider>
-);
+export const HooksWrapper: React.FC = ({ children }) => <Provider store={configureTestStore()}>{children}</Provider>;
 
 export * from '@testing-library/react';

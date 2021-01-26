@@ -23,21 +23,21 @@ import {
   TableHead,
   TableRow,
   Theme,
-  Typography,
+  Typography
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     table: {
-      minWidth: 650,
+      minWidth: 650
     },
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     item: {
       display: 'flex',
-      justifyContent: 'center',
-    },
+      justifyContent: 'center'
+    }
   })
 );
 
@@ -65,11 +65,7 @@ export const ViewPets: React.FC = () => {
           {pets.map((pet) => (
             <TableRow key={pet.id}>
               <TableCell component="th" scope="row">
-                <MuiLink
-                  component={Link}
-                  color="textSecondary"
-                  to={`/${pet.id}`}
-                >
+                <MuiLink component={Link} color="textSecondary" to={`/${pet.id}`}>
                   {pet.name}
                 </MuiLink>
               </TableCell>
@@ -78,10 +74,7 @@ export const ViewPets: React.FC = () => {
                 <IconButton component={Link} to={`edit/${pet.id}`}>
                   <EditIcon />
                 </IconButton>
-                <IconButton
-                  data-testid={`${pet.name}-delete`}
-                  onClick={remove(pet.id)}
-                >
+                <IconButton data-testid={`${pet.name}-delete`} onClick={remove(pet.id)}>
                   <DeleteIcon />
                 </IconButton>
               </TableCell>

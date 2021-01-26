@@ -13,19 +13,19 @@ import {
   ListItemText,
   makeStyles,
   Paper,
-  Theme,
+  Theme
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     list: {
       width: '100%',
       maxWidth: 360,
-      backgroundColor: theme.palette.background.paper,
-    },
+      backgroundColor: theme.palette.background.paper
+    }
   })
 );
 

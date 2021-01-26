@@ -15,8 +15,8 @@ export class Pets {
             id: faker.random.uuid(),
             name: faker.name.firstName(),
             age: faker.random.number(25),
-            type: 'Bird',
-          },
+            type: 'Bird'
+          }
         })
       );
     }, 7000);
@@ -25,7 +25,7 @@ export class Pets {
       ws.send(
         JSON.stringify({
           action: LayoutWebSocketActions.NewTitle,
-          payload: faker.random.word(),
+          payload: faker.random.word()
         })
       );
     }, 10000);

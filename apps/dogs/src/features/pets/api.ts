@@ -3,7 +3,7 @@ import { IPet } from '@pets/types';
 
 export const getPets = async () => {
   const { data } = await axios.get<IPet[]>('/api/pets', {
-    params: { type: 'Dog' },
+    params: { type: 'Dog' }
   });
 
   return data;

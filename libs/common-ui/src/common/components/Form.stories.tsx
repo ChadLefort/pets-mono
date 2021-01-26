@@ -3,11 +3,9 @@ import { PetForm } from './Form';
 
 export default {
   component: PetForm,
-  title: 'PetForm',
+  title: 'PetForm'
 };
 
 export const primary = () => {
-  return (
-    <PetForm onSubmit={(values) => Promise.resolve(console.log(values))} />
-  );
+  return <PetForm onSubmit={(values) => Promise.resolve(console.log(values))} />;
 };

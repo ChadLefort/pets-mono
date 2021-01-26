@@ -17,25 +17,25 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
-      zIndex: theme.zIndex.drawer + 1,
+      zIndex: theme.zIndex.drawer + 1
     },
     drawer: {
       width: drawerWidth,
-      flexShrink: 0,
+      flexShrink: 0
     },
     drawerPaper: {
-      width: drawerWidth,
+      width: drawerWidth
     },
     drawerContainer: {
-      overflow: 'auto',
+      overflow: 'auto'
     },
     toolBar: {
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'space-between'
     },
     icon: {
-      paddingRight: theme.spacing(1),
-    },
+      paddingRight: theme.spacing(1)
+    }
   })
 );
 
@@ -61,13 +61,7 @@ export const Nav: React.FC<Props> = ({ title, children }) => {
           </Box>
 
           <FormControlLabel
-            control={
-              <Switch
-                checked={theme === 'dark'}
-                onClick={toggleTheme}
-                name="theme"
-              />
-            }
+            control={<Switch checked={theme === 'dark'} onClick={toggleTheme} name="theme" />}
             label={theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           />
         </Toolbar>
@@ -76,7 +70,7 @@ export const Nav: React.FC<Props> = ({ title, children }) => {
         className={classes.drawer}
         variant="permanent"
         classes={{
-          paper: classes.drawerPaper,
+          paper: classes.drawerPaper
         }}
       >
         <Toolbar />

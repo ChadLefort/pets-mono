@@ -14,11 +14,7 @@ type Params = {
 
 type Callback<D = any, S = any> = (
   ...args: any[]
-) => (
-  dispatch: D,
-  getState: () => S,
-  sendMessage: (data: { action: string; payload?: any }) => Promise<void>
-) => void;
+) => (dispatch: D, getState: () => S, sendMessage: (data: { action: string; payload?: any }) => Promise<void>) => void;
 
 interface IWebSocketBuilder<D = any, S = any> {
   add: (name: string, callback: Callback<D, S>) => IWebSocketBuilder<D, S>;
@@ -57,12 +53,9 @@ const sendMessage = async (ws: WebSocket, data: any) => {
   ws.send(JSON.stringify(data));
 };
 
-export const websocketMiddleware = ({
-  connection,
-  websocketBuilder,
-}: Params): Middleware => (store) => (next) => async (
-  action: WebSocketAction | AnyAction
-) => {
+export const websocketMiddleware = ({ connection, websocketBuilder }: Params): Middleware => (store) => (
+  next
+) => async (action: WebSocketAction | AnyAction) => {
   connection.onopen = () => {
     console.log('Connected to ws server!');
   };
@@ -79,12 +72,7 @@ export const websocketMiddleware = ({
       if (action === name) {
         callback
           .call(null, payload)
-          .call(
-            store,
-            store.dispatch.bind(store),
-            store.getState.bind(store),
-            (data) => sendMessage(connection, data)
-          );
+          .call(store, store.dispatch.bind(store), store.getState.bind(store), (data) => sendMessage(connection, data));
       }
     });
   };

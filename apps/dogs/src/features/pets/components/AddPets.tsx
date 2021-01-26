@@ -4,23 +4,16 @@ import { PetForm } from '@pets/common-ui';
 import { postPet } from '../api';
 import { useHistory } from 'react-router-dom';
 import { useMutation, useQueryCache } from 'react-query';
-import {
-  createStyles,
-  Grid,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     button: {
-      margin: theme.spacing(2, 0),
-    },
+      margin: theme.spacing(2, 0)
+    }
   })
 );
 
@@ -29,7 +22,7 @@ export const AddPets: React.FC = () => {
   const history = useHistory();
   const cache = useQueryCache();
   const [addPet] = useMutation(postPet, {
-    onSuccess: () => cache.invalidateQueries('pets'),
+    onSuccess: () => cache.invalidateQueries('pets')
   });
 
   const onSubmit = (values: IPet) =>

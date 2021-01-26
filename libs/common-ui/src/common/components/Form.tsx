@@ -2,28 +2,22 @@ import * as Yup from 'yup';
 import React from 'react';
 import { Form } from 'react-final-form';
 import { makeValidate, TextField } from 'mui-rff';
-import {
-  Button,
-  createStyles,
-  Grid,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
+import { Button, createStyles, Grid, makeStyles, Theme } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     button: {
-      margin: theme.spacing(2, 0),
-    },
+      margin: theme.spacing(2, 0)
+    }
   })
 );
 
 const schema = Yup.object().shape({
   name: Yup.string().required('Name is a required field.'),
-  age: Yup.string().required('Age is a required field.'),
+  age: Yup.string().required('Age is a required field.')
 });
 
 type Props<T> = {
@@ -33,16 +27,12 @@ type Props<T> = {
 
 export function PetForm<T extends { name: string; age: string }>({
   onSubmit,
-  initialValues,
+  initialValues
 }: React.PropsWithChildren<Props<T>>) {
   const classes = useStyles();
 
   return (
-    <Form<T>
-      onSubmit={onSubmit}
-      validate={makeValidate(schema)}
-      initialValues={initialValues}
-    >
+    <Form<T> onSubmit={onSubmit} validate={makeValidate(schema)} initialValues={initialValues}>
       {({ handleSubmit, invalid }) => (
         <form onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>

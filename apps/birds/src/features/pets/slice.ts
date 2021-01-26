@@ -1,17 +1,8 @@
 import axios from 'axios';
-import {
-  condition,
-  error,
-  isFetching,
-  State as CommonState
-  } from '@pets/core';
+import { condition, error, isFetching, State as CommonState } from '@pets/core';
 import { IPet, PetsWebSocketActions } from '@pets/types';
 import { RootState } from 'app/store';
-import {
-  createAsyncThunk,
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const name = 'app/birds/pets';
 
@@ -25,7 +16,7 @@ export const fetchPets = createAsyncThunk<
   `${name}/fetchPets`,
   async () => {
     const { data } = await axios.get<IPet[]>('/api/pets', {
-      params: { type: 'Bird' },
+      params: { type: 'Bird' }
     });
 
     return data;
@@ -38,36 +29,28 @@ export const addPet = createAsyncThunk(`${name}/addPet`, async (pet: IPet) => {
   return data;
 });
 
-export const updatePet = createAsyncThunk(
-  `${name}/updatePet`,
-  async (pet: IPet) => {
-    const { data } = await axios.put<IPet>(`/api/pets/${pet.id}`, pet);
-    return data;
-  }
-);
-
-export const removePet = createAsyncThunk(
-  `${name}/removePets`,
-  async (id: string) => {
-    await axios.delete(`/api/pets/${id}`);
-    return id;
-  }
-);
-
-export const petsAdapter = createEntityAdapter<IPet>({
-  sortComparer: (a, b) => a.name.localeCompare(b.name),
+export const updatePet = createAsyncThunk(`${name}/updatePet`, async (pet: IPet) => {
+  const { data } = await axios.put<IPet>(`/api/pets/${pet.id}`, pet);
+  return data;
 });
 
-export const petsSelectors = petsAdapter.getSelectors<RootState>(
-  (state) => state.pets
-);
+export const removePet = createAsyncThunk(`${name}/removePets`, async (id: string) => {
+  await axios.delete(`/api/pets/${id}`);
+  return id;
+});
+
+export const petsAdapter = createEntityAdapter<IPet>({
+  sortComparer: (a, b) => a.name.localeCompare(b.name)
+});
+
+export const petsSelectors = petsAdapter.getSelectors<RootState>((state) => state.pets);
 
 type State = { hasStarted: boolean } & CommonState;
 
 export const initialState = petsAdapter.getInitialState<State>({
   hasStarted: false,
   isFetching: false,
-  error: null,
+  error: null
 });
 
 const pets = createSlice({
@@ -82,10 +65,10 @@ const pets = createSlice({
         payload: {},
         meta: {
           ws: {
-            action: PetsWebSocketActions.Start,
-          },
-        },
-      }),
+            action: PetsWebSocketActions.Start
+          }
+        }
+      })
     },
     stop: {
       reducer: (state) => {
@@ -95,14 +78,14 @@ const pets = createSlice({
         payload: {},
         meta: {
           ws: {
-            action: PetsWebSocketActions.Stop,
-          },
-        },
-      }),
+            action: PetsWebSocketActions.Stop
+          }
+        }
+      })
     },
     fetchNewPets(state, action) {
       petsAdapter.addOne(state, action.payload);
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -122,7 +105,7 @@ const pets = createSlice({
         state.isFetching = false;
         petsAdapter.updateOne(state, {
           id: action.payload.id,
-          changes: action.payload,
+          changes: action.payload
         });
       })
       .addCase(removePet.fulfilled, (state, action) => {
@@ -133,10 +116,10 @@ const pets = createSlice({
       .addCase(addPet.rejected, error)
       .addCase(updatePet.rejected, error)
       .addCase(removePet.rejected, error);
-  },
+  }
 });
 
 export const {
   actions: { start, stop, fetchNewPets },
-  reducer: petsReducer,
+  reducer: petsReducer
 } = pets;

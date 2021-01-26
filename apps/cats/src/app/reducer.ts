@@ -9,5 +9,5 @@ export const useTypedSelector = createSelectorHook<RootState>();
 
 export const reducer = {
   core: combineReducers({ auth: authReducer }),
-  pets: petsReducer,
+  pets: petsReducer
 };

@@ -5,11 +5,7 @@ import { fetchPets, initialState, removePet } from '../slice';
 import { getActionResult, renderWithProviders, screen } from 'utils/test-utils';
 import { IPet, petsFixture } from '@pets/types';
 import { ViewPets } from './ViewPets';
-import {
-  cleanup,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { cleanup, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -24,16 +20,14 @@ describe('view pets', () => {
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
 
     const { store } = renderWithProviders(<ViewPets />, {
-      initialState: { pets: initialState },
+      initialState: { pets: initialState }
     });
 
     expect(screen.getByRole('progressbar')).toBeDefined();
 
     await waitForElementToBeRemoved(() => screen.getByRole('progressbar'));
 
-    expect(screen.getByText(petsFixture[0].name)).toHaveTextContent(
-      petsFixture[0].name
-    );
+    expect(screen.getByText(petsFixture[0].name)).toHaveTextContent(petsFixture[0].name);
 
     const { type } = await getActionResult<IPet[]>(store.dispatch);
     expect(type).toEqual(fetchPets.fulfilled.type);
@@ -43,7 +37,7 @@ describe('view pets', () => {
     axiosMock.onGet('/api/pets').reply(500);
 
     const { store } = renderWithProviders(<ViewPets />, {
-      initialState: { pets: initialState },
+      initialState: { pets: initialState }
     });
 
     expect(screen.getByRole('progressbar')).toBeDefined();
@@ -61,7 +55,7 @@ describe('view pets', () => {
     axiosMock.onDelete(`/api/pets/${petsFixture[1].id}`).reply(200);
 
     const { store } = renderWithProviders(<ViewPets />, {
-      initialState: { pets: initialState },
+      initialState: { pets: initialState }
     });
 
     expect(screen.getByRole('progressbar')).toBeDefined();

@@ -5,25 +5,16 @@ import { putPet } from '../api';
 import { useFetchPet } from '../hooks/useFetchPet';
 import { useHistory, useParams } from 'react-router-dom';
 import { useMutation, useQueryCache } from 'react-query';
-import {
-  Container,
-  createStyles,
-  Grid,
-  LinearProgress,
-  makeStyles,
-  Paper,
-  Theme,
-  Typography,
-} from '@material-ui/core';
+import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(2)
     },
     button: {
-      margin: theme.spacing(2, 0),
-    },
+      margin: theme.spacing(2, 0)
+    }
   })
 );
 
@@ -34,7 +25,7 @@ export const EditPet: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { pet, isLoading, error } = useFetchPet(id);
   const [updatePet] = useMutation(putPet, {
-    onSuccess: () => cache.invalidateQueries('pets'),
+    onSuccess: () => cache.invalidateQueries('pets')
   });
 
   const onSubmit = (values: IPet) =>

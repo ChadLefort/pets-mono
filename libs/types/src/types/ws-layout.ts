@@ -1,3 +1,3 @@
 export enum LayoutWebSocketActions {
-  NewTitle = 'newTitle',
+  NewTitle = 'newTitle'
 }

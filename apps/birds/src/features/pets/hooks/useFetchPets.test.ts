@@ -16,7 +16,7 @@ describe('useFetchPets hook', () => {
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
 
     const { result, waitForNextUpdate } = renderHook(() => useFetchPets(), {
-      wrapper: HooksWrapper,
+      wrapper: HooksWrapper
     });
 
     expect(result.current.isFetching).toBeTruthy();
@@ -25,8 +25,6 @@ describe('useFetchPets hook', () => {
     await waitForNextUpdate();
 
     expect(result.current.isFetching).toBeFalsy();
-    expect(Object.values(result.current.pets)).toEqual(
-      petsFixture.sort((a, b) => a.name.localeCompare(b.name))
-    );
+    expect(Object.values(result.current.pets)).toEqual(petsFixture.sort((a, b) => a.name.localeCompare(b.name)));
   });
 });

@@ -10,16 +10,9 @@ const connection = new WebSocket('ws://localhost:4200/api/ws/pets');
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      websocketMiddleware({ connection, websocketBuilder })
-    ),
+    getDefaultMiddleware().concat(websocketMiddleware({ connection, websocketBuilder }))
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export type AppThunk<ReturnType = Promise<void>> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppThunk<ReturnType = Promise<void>> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;

@@ -4,24 +4,17 @@ import ListItemText from '@material-ui/core/ListItemText';
 import React from 'react';
 import { Nav } from './Nav';
 import { NavLink } from 'react-router-dom';
-import {
-  Grid,
-  makeStyles,
-  createStyles,
-  Theme as MuiTheme,
-  Toolbar,
-  Box,
-} from '@material-ui/core';
+import { Grid, makeStyles, createStyles, Theme as MuiTheme, Toolbar, Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: MuiTheme) =>
   createStyles({
     root: {
-      display: 'flex',
+      display: 'flex'
     },
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3),
-    },
+      padding: theme.spacing(3)
+    }
   })
 );
 
@@ -36,22 +29,10 @@ export const Layout: React.FC<Props> = ({ title, children }) => {
     <Box className={classes.root}>
       <Nav title={title}>
         <List>
-          <ListItem
-            button
-            component={NavLink}
-            to="/"
-            exact
-            activeClassName="Mui-selected"
-          >
+          <ListItem button component={NavLink} to="/" exact activeClassName="Mui-selected">
             <ListItemText primary="View Pets" />
           </ListItem>
-          <ListItem
-            button
-            component={NavLink}
-            to="/add"
-            exact
-            activeClassName="Mui-selected"
-          >
+          <ListItem button component={NavLink} to="/add" exact activeClassName="Mui-selected">
             <ListItemText primary="Add Pets" />
           </ListItem>
         </List>

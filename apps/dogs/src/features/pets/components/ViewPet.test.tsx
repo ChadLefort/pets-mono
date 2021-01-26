@@ -18,31 +18,25 @@ describe('view pet', () => {
   it('can show a loading bar and then a pet', async () => {
     axiosMock.onGet('/api/pets/56d35640-008b-4022-bb4a-ebba0c78f6b3').reply(
       200,
-      petsFixture.find(
-        ({ id }) => id === '56d35640-008b-4022-bb4a-ebba0c78f6b3'
-      )
+      petsFixture.find(({ id }) => id === '56d35640-008b-4022-bb4a-ebba0c78f6b3')
     );
 
     renderWithProviders(<Route path="/:id" component={ViewPet} />, {
-      initialEntries: ['/56d35640-008b-4022-bb4a-ebba0c78f6b3'],
+      initialEntries: ['/56d35640-008b-4022-bb4a-ebba0c78f6b3']
     });
 
     expect(screen.getByRole('progressbar')).toBeDefined();
 
     await waitForElementToBeRemoved(() => screen.getByRole('progressbar'));
 
-    expect(screen.getByText(petsFixture[1].name)).toHaveTextContent(
-      petsFixture[1].name
-    );
+    expect(screen.getByText(petsFixture[1].name)).toHaveTextContent(petsFixture[1].name);
   });
 
   it('can show a loading bar and then an error', async () => {
-    axiosMock
-      .onGet('/api/pets/56d35640-008b-4022-bb4a-ebba0c78f6b3')
-      .reply(500);
+    axiosMock.onGet('/api/pets/56d35640-008b-4022-bb4a-ebba0c78f6b3').reply(500);
 
     renderWithProviders(<Route path="/:id" component={ViewPet} />, {
-      initialEntries: ['/56d35640-008b-4022-bb4a-ebba0c78f6b3'],
+      initialEntries: ['/56d35640-008b-4022-bb4a-ebba0c78f6b3']
     });
 
     expect(screen.getByRole('progressbar')).toBeDefined();

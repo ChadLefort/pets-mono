@@ -6,13 +6,7 @@ import { Action } from 'redux';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { IPet, petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
-import {
-  addPet,
-  fetchPets,
-  initialState,
-  petsReducer,
-  removePet,
-} from './slice';
+import { addPet, fetchPets, initialState, petsReducer, removePet } from './slice';
 
 const mockStore = configureStore<
   DeepPartial<RootState>,
@@ -57,9 +51,7 @@ describe('pets actions', () => {
     const actions = store.getActions();
 
     expect(actions[1].type).toEqual(fetchPets.rejected.type);
-    expect(actions[1].error.message).toEqual(
-      'Request failed with status code 500'
-    );
+    expect(actions[1].error.message).toEqual('Request failed with status code 500');
   });
 
   // are these valable if using createAsyncThunk?
@@ -76,15 +68,10 @@ describe('pets reducer', () => {
   });
 
   test('pets/fetchPets/fulfilled', () => {
-    const nextState = petsReducer(
-      prevState,
-      fetchPets.fulfilled(petsFixture, '')
-    ); // second param requestID?
+    const nextState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '')); // second param requestID?
 
     expect(nextState.isFetching).toBeFalsy();
-    expect(Object.values(nextState.entities)).toEqual(
-      petsFixture.sort((a, b) => a.name.localeCompare(b.name))
-    );
+    expect(Object.values(nextState.entities)).toEqual(petsFixture.sort((a, b) => a.name.localeCompare(b.name)));
     expect(nextState.error).toBeNull();
   });
 
@@ -110,18 +97,13 @@ describe('pets reducer', () => {
       id: '8ee4eca1-c441-4cdb-8720-b2003d183568',
       name: 'PT',
       age: '12',
-      type: 'Bird',
+      type: 'Bird'
     };
 
-    const nextState = petsReducer(
-      prevState,
-      addPet.fulfilled(newPet, '', newPet)
-    );
+    const nextState = petsReducer(prevState, addPet.fulfilled(newPet, '', newPet));
 
     expect(nextState.isFetching).toBeFalsy();
-    expect(Object.values(nextState.entities)).toEqual(
-      petsFixture.concat(newPet)
-    );
+    expect(Object.values(nextState.entities)).toEqual(petsFixture.concat(newPet));
     expect(nextState.error).toBeNull();
   });
 
@@ -145,11 +127,7 @@ describe('pets reducer', () => {
 
     const nextState = petsReducer(
       prevState,
-      removePet.fulfilled(
-        'fd546b4e-747d-448f-abaf-b0d119bae119',
-        '',
-        'fd546b4e-747d-448f-abaf-b0d119bae119'
-      )
+      removePet.fulfilled('fd546b4e-747d-448f-abaf-b0d119bae119', '', 'fd546b4e-747d-448f-abaf-b0d119bae119')
     );
 
     expect(nextState.isFetching).toBeFalsy();
