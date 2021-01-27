@@ -1,9 +1,4 @@
 import React from 'react';
-import { ErrorIcon } from '@pets/common-ui';
-import { petsSelectors } from '../slice';
-import { useFetchPets } from '../hooks/useFetchPets';
-import { useParams } from 'react-router-dom';
-import { useTypedSelector } from 'app/reducer';
 import {
   Container,
   createStyles,
@@ -15,6 +10,11 @@ import {
   Paper,
   Theme
 } from '@material-ui/core';
+import { ErrorIcon } from '@pets/common-ui';
+import { petsSelectors } from '../pets.slice';
+import { useFetchPets } from '../hooks/useFetchPets';
+import { useParams } from 'react-router-dom';
+import { useTypedSelector } from 'app/reducer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

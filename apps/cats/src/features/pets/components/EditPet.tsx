@@ -1,11 +1,11 @@
 import React from 'react';
+import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 import { ErrorIcon, PetForm } from '@pets/common-ui';
 import { IPet } from '@pets/types';
-import { petsSelectors, updatePet } from '../slice';
+import { petsSelectors, updatePet } from '../pets.slice';
 import { useAppDispatch, useTypedSelector } from 'app/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';
 import { useHistory, useParams } from 'react-router-dom';
-import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

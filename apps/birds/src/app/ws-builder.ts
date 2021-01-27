@@ -1,7 +1,7 @@
-import { fetchNewPets } from 'features/pets/slice';
-import { fetchNewTitle } from 'features/layout/slice';
+import { fetchNewPets } from 'features/pets/pets.slice';
+import { fetchNewTitle } from 'features/layout/layout.slice';
+import { IPet, LayoutWebSocketActions, PetsWebSocketActions } from '@pets/types';
 import { websocketBuilder } from '@pets/core';
-import { IPet, PetsWebSocketActions, LayoutWebSocketActions } from '@pets/types';
 
 export const callbacks = websocketBuilder()
   .add(PetsWebSocketActions.NewPet, (payload: IPet) => (dispatch, store, sendMessage) => {

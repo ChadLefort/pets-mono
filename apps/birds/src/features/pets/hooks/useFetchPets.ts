@@ -1,4 +1,4 @@
-import { fetchPets, petsSelectors } from '../slice';
+import { fetchPets, petsSelectors } from '../pets.slice';
 import { store } from 'app/store';
 import { useAppDispatch, useTypedSelector } from 'app/reducer';
 import { useEffect } from 'react';

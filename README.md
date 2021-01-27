@@ -1,5 +1,7 @@
 # Pets Monorepo
 
+Learn more about the application's structure and the difference between the apps by [reading the docs](./docs/architecture.md).
+
 ## Development server with JSON-server or Express
 
 Run `nx run my-app:start` for a dev server to start with either JSON-server or Express. Navigate to http://localhost:4200/ for the app and http://localhost:4000/ for the api. The app will automatically reload if you change any of the source files and the api is automatically proxied to the app.

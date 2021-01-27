@@ -1,6 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
+import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-utils';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { EditPet } from './EditPet';
 import { fireEvent, screen } from '@testing-library/react';
@@ -8,8 +9,7 @@ import { IPet } from '@pets/types';
 import { petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
 import { Route } from 'react-router-dom';
-import { updatePet } from '../slice';
-import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-utils';
+import { updatePet } from '../pets.slice';
 
 const axiosMock = new MockAdapter(axios);
 const initialState: DeepPartial<RootState> = {

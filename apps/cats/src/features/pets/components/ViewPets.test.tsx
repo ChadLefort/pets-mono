@@ -1,11 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { fetchPets, initialState, removePet } from '../slice';
+import { cleanup, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
+import { fetchPets, initialState, removePet } from '../pets.slice';
 import { getActionResult, renderWithProviders, screen } from 'utils/test-utils';
 import { IPet, petsFixture } from '@pets/types';
 import { ViewPets } from './ViewPets';
-import { cleanup, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 
 const axiosMock = new MockAdapter(axios);
 

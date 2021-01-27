@@ -3,10 +3,10 @@ import configureStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
+import { addPet, fetchPets, initialState, petsReducer, removePet } from './pets.slice';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { IPet, petsFixture } from '@pets/types';
 import { RootState } from 'app/store';
-import { addPet, fetchPets, initialState, petsReducer, removePet } from './slice';
 
 const mockStore = configureStore<
   DeepPartial<RootState>,
