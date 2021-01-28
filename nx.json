@@ -1,5 +1,5 @@
 {
-  "npmScope": "pets",
+  "npmScope": "pet-tracker",
   "affected": {
     "defaultBase": "master"
   },
