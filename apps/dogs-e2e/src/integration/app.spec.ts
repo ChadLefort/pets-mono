@@ -1,6 +1,6 @@
 import { getToolbarAppName } from '../support/app.po';
 
-describe('birds', () => {
+describe('dogs', () => {
   beforeEach(() => {
     cy.visit('/');
     cy.route2('GET', '/api/auth', { fixture: 'auth.json' });
@@ -8,6 +8,6 @@ describe('birds', () => {
   });
 
   it('should contain app name in toolbar', () => {
-    getToolbarAppName().contains('Birds');
+    getToolbarAppName().contains('Dogs');
   });
 });

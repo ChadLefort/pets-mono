@@ -12,7 +12,7 @@ export const App: React.FC = () => (
     <Router>
       <Theme primaryColor={red[400]}>
         <Auth>
-          <Layout title="Birds">
+          <Layout title="Dogs">
             <Routes />
           </Layout>
         </Auth>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { addPet } from '../pets.slice';
 import { createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
-import { IPet } from '@pets/types';
+import { IPet, PetType } from '@pets/types';
 import { PetForm } from '../../../common/Form';
 import { useAppDispatch } from '../../../common/reducer';
 import { useHistory } from 'react-router-dom';
@@ -17,7 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const AddPets: React.FC = () => {
+type Props = {
+  type: PetType;
+};
+
+export const AddPets: React.FC<Props> = ({ type }) => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -25,7 +29,7 @@ export const AddPets: React.FC = () => {
   const onSubmit = (values: IPet) =>
     new Promise<void>((resolve, reject) => {
       try {
-        dispatch(addPet({ ...values, type: 'Cat' }));
+        dispatch(addPet({ ...values, type }));
         history.push('/');
         resolve();
       } catch (error) {

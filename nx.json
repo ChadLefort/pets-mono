@@ -26,13 +26,6 @@
     "api": {
       "tags": []
     },
-    "birds": {
-      "tags": []
-    },
-    "birds-e2e": {
-      "tags": [],
-      "implicitDependencies": ["birds"]
-    },
     "cats": {
       "tags": []
     },
@@ -40,16 +33,23 @@
       "tags": [],
       "implicitDependencies": ["cats"]
     },
-    "common-ui": {
+    "dogs": {
       "tags": []
     },
-    "types": {
+    "dogs-e2e": {
+      "tags": [],
+      "implicitDependencies": ["dogs"]
+    },
+    "auth": {
+      "tags": []
+    },
+    "common-ui": {
       "tags": []
     },
     "pets": {
       "tags": []
     },
-    "auth": {
+    "types": {
       "tags": []
     },
     "utils": {

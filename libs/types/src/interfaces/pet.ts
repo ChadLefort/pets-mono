@@ -1,8 +1,6 @@
 export enum PetType {
   Cat = 'Cat',
-  Dog = 'Dog',
-  Bird = 'Bird',
-  Other = 'Other'
+  Dog = 'Dog'
 }
 
 export interface IPet {
