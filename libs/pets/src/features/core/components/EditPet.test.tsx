@@ -5,7 +5,7 @@ import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-
 import { DeepPartial } from '@reduxjs/toolkit';
 import { EditPet } from './EditPet';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet, petsFixture } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pets/types';
 import { RootState } from 'common/reducer';
 import { Route } from 'react-router-dom';
 import { updatePet } from '../pets.slice';
@@ -20,7 +20,7 @@ const initialState: DeepPartial<RootState> = {
           id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
           name: 'Pat',
           age: '7',
-          type: 'Bird'
+          type: PetType.Cat
         }
       },
       isFetching: false,
@@ -39,14 +39,14 @@ describe('edit pet', () => {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
       age: '8',
-      type: 'Bird'
+      type: PetType.Cat
     };
 
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
     axiosMock.onPut('/api/pets/89222b2d-8d06-41ff-82cf-c989dd90de24').reply(200, updatedPet);
 
     const store = await actWithReturn(async () => {
-      const { store } = renderWithProviders(<Route path="/edit/:id" component={EditPet} />, {
+      const { store } = renderWithProviders(<Route path="/edit/:id" render={() => <EditPet type={PetType.Cat} />} />, {
         initialState,
         initialEntries: ['/edit/89222b2d-8d06-41ff-82cf-c989dd90de24']
       });

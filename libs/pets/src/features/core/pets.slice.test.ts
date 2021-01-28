@@ -5,7 +5,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { addPet, fetchPets, initialState, petsReducer, removePet } from './pets.slice';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { IPet, petsFixture } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pets/types';
 import { RootState } from 'common/reducer';
 
 const mockStore = configureStore<
@@ -27,7 +27,7 @@ describe('pets actions', () => {
   it('dipatches a success action when fetching pets', async () => {
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
 
-    await store.dispatch(fetchPets());
+    await store.dispatch(fetchPets(PetType.Cat));
 
     const actions = store.getActions();
 
@@ -37,7 +37,7 @@ describe('pets actions', () => {
 
   it('dipatches a failure action for a 404 with a payload', async () => {
     axiosMock.onGet('/api/pets').reply(404);
-    await store.dispatch(fetchPets());
+    await store.dispatch(fetchPets(PetType.Cat));
 
     const actions = store.getActions();
 
@@ -46,7 +46,7 @@ describe('pets actions', () => {
 
   it('dipatches a failure action', async () => {
     axiosMock.onGet('/api/pets').reply(500);
-    await store.dispatch(fetchPets());
+    await store.dispatch(fetchPets(PetType.Cat));
 
     const actions = store.getActions();
 
@@ -59,7 +59,7 @@ describe('pets actions', () => {
 });
 
 describe('pets reducer', () => {
-  test('pets/fetchPets/pending', () => {
+  test('lib/pets/core/fetchPets/pending', () => {
     const nextState = petsReducer(prevState, fetchPets.pending);
 
     expect(prevState.isFetching).toBeFalsy();
@@ -67,22 +67,22 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/fetchPets/fulfilled', () => {
-    const nextState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '')); // second param requestID?
+  test('lib/pets/core/fetchPets/fulfilled', () => {
+    const nextState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat)); // second param requestID?
 
     expect(nextState.isFetching).toBeFalsy();
     expect(Object.values(nextState.entities)).toEqual(petsFixture.sort((a, b) => a.name.localeCompare(b.name)));
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/fetchPets/rejected', () => {
-    const nextState = petsReducer(prevState, fetchPets.rejected(error, ''));
+  test('lib/pets/core/fetchPets/rejected', () => {
+    const nextState = petsReducer(prevState, fetchPets.rejected(error, '', PetType.Cat));
 
     expect(nextState.isFetching).toBeFalsy();
     expect(nextState.error?.message).toEqual(error.message);
   });
 
-  test('pets/addPet/pending', () => {
+  test('lib/pets/core/addPet/pending', () => {
     const nextState = petsReducer(prevState, addPet.pending);
 
     expect(prevState.isFetching).toBeFalsy();
@@ -90,14 +90,14 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/addPet/fulfilled', () => {
-    prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
+  test('lib/pets/core/addPet/fulfilled', () => {
+    prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat));
 
     const newPet: IPet = {
       id: '8ee4eca1-c441-4cdb-8720-b2003d183568',
       name: 'PT',
       age: '12',
-      type: 'Bird'
+      type: PetType.Cat
     };
 
     const nextState = petsReducer(prevState, addPet.fulfilled(newPet, '', newPet));
@@ -107,14 +107,14 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/removePet/rejected', () => {
-    const nextState = petsReducer(prevState, fetchPets.rejected(error, ''));
+  test('lib/pets/core/removePet/rejected', () => {
+    const nextState = petsReducer(prevState, fetchPets.rejected(error, '', PetType.Cat));
 
     expect(nextState.isFetching).toBeFalsy();
     expect(nextState.error?.message).toEqual(error.message);
   });
 
-  test('pets/addPet/pending', () => {
+  test('lib/pets/core/addPet/pending', () => {
     const nextState = petsReducer(prevState, addPet.pending);
 
     expect(prevState.isFetching).toBeFalsy();
@@ -122,8 +122,8 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/removePet/fulfilled', () => {
-    prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, ''));
+  test('lib/pets/core/removePet/fulfilled', () => {
+    prevState = petsReducer(prevState, fetchPets.fulfilled(petsFixture, '', PetType.Cat));
 
     const nextState = petsReducer(
       prevState,
@@ -137,8 +137,8 @@ describe('pets reducer', () => {
     expect(nextState.error).toBeNull();
   });
 
-  test('pets/removePet/rejected', () => {
-    const nextState = petsReducer(prevState, fetchPets.rejected(error, ''));
+  test('lib/pets/core/removePet/rejected', () => {
+    const nextState = petsReducer(prevState, fetchPets.rejected(error, '', PetType.Cat));
 
     expect(nextState.isFetching).toBeFalsy();
     expect(nextState.error?.message).toEqual(error.message);

@@ -4,7 +4,7 @@ import React from 'react';
 import { cleanup, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import { fetchPets, initialState, removePet } from '../pets.slice';
 import { getActionResult, renderWithProviders, screen } from 'utils/test-utils';
-import { IPet, petsFixture } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pets/types';
 import { ViewPets } from './ViewPets';
 
 const axiosMock = new MockAdapter(axios);
@@ -19,7 +19,7 @@ describe('view pets', () => {
   it('can show a loading bar and then pets', async () => {
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
 
-    const { store } = renderWithProviders(<ViewPets />, {
+    const { store } = renderWithProviders(<ViewPets type={PetType.Cat} />, {
       initialState: { pets: { core: initialState } }
     });
 
@@ -36,7 +36,7 @@ describe('view pets', () => {
   it('can show a loading bar and an error icon', async () => {
     axiosMock.onGet('/api/pets').reply(500);
 
-    const { store } = renderWithProviders(<ViewPets />, {
+    const { store } = renderWithProviders(<ViewPets type={PetType.Cat} />, {
       initialState: { pets: { core: initialState } }
     });
 
@@ -54,7 +54,7 @@ describe('view pets', () => {
     axiosMock.onGet('/api/pets').reply(200, petsFixture);
     axiosMock.onDelete(`/api/pets/${petsFixture[1].id}`).reply(200);
 
-    const { store } = renderWithProviders(<ViewPets />, {
+    const { store } = renderWithProviders(<ViewPets type={PetType.Cat} />, {
       initialState: { pets: { core: initialState } }
     });
 

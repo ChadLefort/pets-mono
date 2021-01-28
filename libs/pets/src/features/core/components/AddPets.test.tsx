@@ -5,7 +5,7 @@ import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-
 import { addPet, initialState } from '../pets.slice';
 import { AddPets } from './AddPets';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet } from '@pets/types';
+import { IPet, PetType } from '@pets/types';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -19,13 +19,13 @@ describe('add pets', () => {
       id: '89222b2d-8d06-41ff-82cf-c989dd90de24',
       name: 'Pat',
       age: '7',
-      type: 'Bird'
+      type: PetType.Cat
     };
 
     axiosMock.onPost('/api/pets').reply(200, newPet);
 
     const store = await actWithReturn(async () => {
-      const { store } = renderWithProviders(<AddPets />, {
+      const { store } = renderWithProviders(<AddPets type={PetType.Cat} />, {
         initialState: { pets: { core: initialState } }
       });
 
