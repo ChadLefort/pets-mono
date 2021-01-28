@@ -89,6 +89,7 @@
     "babel-jest": "26.2.2",
     "babel-loader": "8.1.0",
     "cypress": "^5.5.0",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
@@ -122,5 +123,10 @@
       "eslint --cache --fix",
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
