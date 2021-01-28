@@ -9,7 +9,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
@@ -34,12 +36,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
+          "outputs": [
+            "coverage/apps/api"
+          ],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -54,7 +60,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/cats",
             "index": "apps/cats/src/index.html",
@@ -101,19 +109,26 @@
         "start": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve cats", "npm run json-server"],
+            "commands": [
+              "nx serve cats",
+              "npm run json-server"
+            ],
             "parallel": true
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cats/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/cats/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/cats"],
+          "outputs": [
+            "coverage/apps/cats"
+          ],
           "options": {
             "jestConfig": "apps/cats/jest.config.js",
             "passWithNoTests": true
@@ -142,7 +157,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cats-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/cats-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -154,7 +171,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/dogs",
             "index": "apps/dogs/src/index.html",
@@ -201,19 +220,26 @@
         "start": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve dogs", "nx serve api"],
+            "commands": [
+              "nx serve dogs",
+              "nx serve api"
+            ],
             "parallel": true
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dogs/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/dogs/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dogs"],
+          "outputs": [
+            "coverage/apps/dogs"
+          ],
           "options": {
             "jestConfig": "apps/dogs/jest.config.js",
             "passWithNoTests": true
@@ -242,7 +268,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/dogs-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/dogs-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -255,18 +283,25 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/auth/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/auth/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/auth",
             "tsConfig": "libs/auth/tsconfig.lib.json",
             "project": "libs/auth/package.json",
             "entryFile": "libs/auth/src/index.ts",
-            "external": ["react", "react-dom"],
+            "external": [
+              "react",
+              "react-dom"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -280,10 +315,18 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/auth"],
+          "outputs": [
+            "coverage/libs/auth"
+          ],
           "options": {
             "jestConfig": "libs/auth/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": false
           }
         }
       }
@@ -296,18 +339,26 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/common-ui/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/common-ui/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/common-ui",
             "tsConfig": "libs/common-ui/tsconfig.lib.json",
             "project": "libs/common-ui/package.json",
             "entryFile": "libs/common-ui/src/index.ts",
-            "external": ["react", "react-dom", "react-is"],
+            "external": [
+              "react",
+              "react-dom",
+              "react-is"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -321,7 +372,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/common-ui"],
+          "outputs": [
+            "coverage/libs/common-ui"
+          ],
           "options": {
             "jestConfig": "libs/common-ui/jest.config.js",
             "passWithNoTests": true
@@ -356,6 +409,12 @@
               "quiet": true
             }
           }
+        },
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": false
+          }
         }
       }
     },
@@ -367,18 +426,26 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/pets/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/pets/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/pets",
             "tsConfig": "libs/pets/tsconfig.lib.json",
             "project": "libs/pets/package.json",
             "entryFile": "libs/pets/src/index.ts",
-            "external": ["react", "react-dom", "react-is"],
+            "external": [
+              "react",
+              "react-dom",
+              "react-is"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -392,7 +459,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/pets"],
+          "outputs": [
+            "coverage/libs/pets"
+          ],
           "options": {
             "jestConfig": "libs/pets/jest.config.js",
             "passWithNoTests": true
@@ -427,6 +496,12 @@
               "quiet": true
             }
           }
+        },
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": false
+          }
         }
       }
     },
@@ -438,12 +513,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/types/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/types/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/types"],
+          "outputs": [
+            "coverage/libs/types"
+          ],
           "options": {
             "jestConfig": "libs/types/jest.config.js",
             "passWithNoTests": true
@@ -451,13 +530,23 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/types",
             "tsConfig": "libs/types/tsconfig.lib.json",
             "packageJson": "libs/types/package.json",
             "main": "libs/types/src/index.ts",
-            "assets": ["libs/types/*.md"]
+            "assets": [
+              "libs/types/*.md"
+            ]
+          }
+        },
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": false
           }
         }
       }
@@ -470,18 +559,25 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/utils/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/utils/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/utils",
             "tsConfig": "libs/utils/tsconfig.lib.json",
             "project": "libs/utils/package.json",
             "entryFile": "libs/utils/src/index.ts",
-            "external": ["react", "react-dom"],
+            "external": [
+              "react",
+              "react-dom"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -495,10 +591,18 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/utils"],
+          "outputs": [
+            "coverage/libs/utils"
+          ],
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "version": {
+          "executor": "@jscutlery/semver:version",
+          "options": {
+            "syncVersions": false
           }
         }
       }
