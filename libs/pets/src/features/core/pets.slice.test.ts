@@ -5,7 +5,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { addPet, fetchPets, initialState, petsReducer, removePet } from './pets.slice';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { IPet, petsFixture, PetType } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pet-tracker/types';
 import { RootState } from 'common/reducer';
 
 const mockStore = configureStore<

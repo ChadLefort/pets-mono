@@ -1,9 +1,9 @@
 import { Action } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { petsWebsocketBuilder } from '@pets/pets';
+import { petsWebsocketBuilder } from '@pet-tracker/pets';
 import { reducer } from './reducer';
 import { ThunkAction } from 'redux-thunk';
-import { websocketMiddleware } from '@pets/utils';
+import { websocketMiddleware } from '@pet-tracker/utils';
 
 const connection = new WebSocket('ws://localhost:4200/api/ws/pets');
 

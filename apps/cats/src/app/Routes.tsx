@@ -1,6 +1,6 @@
 import React from 'react';
-import { AddPets, EditPet, ViewPet, ViewPets } from '@pets/pets';
-import { PetType } from '@pets/types';
+import { AddPets, EditPet, ViewPet, ViewPets } from '@pet-tracker/pets';
+import { PetType } from '@pet-tracker/types';
 import { Route, Switch } from 'react-router-dom';
 
 export const Routes: React.FC = () => (

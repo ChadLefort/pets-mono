@@ -20,9 +20,9 @@ import {
   Theme,
   Typography
 } from '@material-ui/core';
-import { ErrorIcon } from '@pets/common-ui';
+import { ErrorIcon } from '@pet-tracker/common-ui';
 import { Link } from 'react-router-dom';
-import { PetType } from '@pets/types';
+import { PetType } from '@pet-tracker/types';
 import { removePet, start } from '../pets.slice';
 import { useAppDispatch } from '../../../common/reducer';
 import { useFetchPets } from '../hooks/useFetchPets';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { error, isFetching, State as CommonState } from '@pets/utils';
+import { error, isFetching, State as CommonState } from '@pet-tracker/utils';
 
 const name = 'lib/auth/core';
 

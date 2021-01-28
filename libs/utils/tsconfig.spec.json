@@ -6,11 +6,11 @@
     "types": ["jest", "node"],
     "baseUrl": "./src",
     "paths": {
-      "@pets/auth": ["../../../libs/auth/src/index.ts"],
-      "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],
-      "@pets/pets": ["../../../libs/pets/src/index.ts"],
-      "@pets/types": ["../../../libs/types/src/index.ts"],
-      "@pets/utils": ["../../../libs/utils/src/index.ts"]
+      "@pet-tracker/auth": ["../../../libs/auth/src/index.ts"],
+      "@pet-tracker/common-ui": ["../../../libs/common-ui/src/index.ts"],
+      "@pet-tracker/pets": ["../../../libs/pets/src/index.ts"],
+      "@pet-tracker/types": ["../../../libs/types/src/index.ts"],
+      "@pet-tracker/utils": ["../../../libs/utils/src/index.ts"]
     }
   },
   "include": ["**/*.test.ts", "**/*.test.tsx", "**/*.test.js", "**/*.test.jsx", "**/*.d.ts"]

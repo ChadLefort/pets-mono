@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Box, Container, LinearProgress } from '@material-ui/core';
-import { ErrorIcon } from '@pets/common-ui';
+import { ErrorIcon } from '@pet-tracker/common-ui';
 import { fetchAuthToken } from '../auth.slice';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../common/reducer';

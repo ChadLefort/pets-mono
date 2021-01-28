@@ -16,11 +16,11 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],
-      "@pets/types": ["../../../libs/types/src/index.ts"],
-      "@pets/pets": ["../../../libs/pets/src/index.ts"],
-      "@pets/auth": ["../../../libs/auth/src/index.ts"],
-      "@pets/utils": ["../../../libs/utils/src/index.ts"]
+      "@pet-tracker/common-ui": ["../../../libs/common-ui/src/index.ts"],
+      "@pet-tracker/types": ["../../../libs/types/src/index.ts"],
+      "@pet-tracker/pets": ["../../../libs/pets/src/index.ts"],
+      "@pet-tracker/auth": ["../../../libs/auth/src/index.ts"],
+      "@pet-tracker/utils": ["../../../libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

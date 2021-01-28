@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { authFixture } from '@pets/types';
+import { authFixture } from '@pet-tracker/types';
 
 export const auth = () => {
   const router = express.Router();

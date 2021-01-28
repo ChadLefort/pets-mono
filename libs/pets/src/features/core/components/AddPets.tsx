@@ -1,7 +1,7 @@
 import React from 'react';
 import { addPet } from '../pets.slice';
 import { createStyles, Grid, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
-import { IPet, PetType } from '@pets/types';
+import { IPet, PetType } from '@pet-tracker/types';
 import { PetForm } from '../../../common/Form';
 import { useAppDispatch } from '../../../common/reducer';
 import { useHistory } from 'react-router-dom';

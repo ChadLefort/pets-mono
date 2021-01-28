@@ -4,7 +4,7 @@ import React from 'react';
 import { cleanup, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import { fetchPets, initialState, removePet } from '../pets.slice';
 import { getActionResult, renderWithProviders, screen } from 'utils/test-utils';
-import { IPet, petsFixture, PetType } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pet-tracker/types';
 import { ViewPets } from './ViewPets';
 
 const axiosMock = new MockAdapter(axios);

@@ -5,7 +5,7 @@ import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-
 import { DeepPartial } from '@reduxjs/toolkit';
 import { EditPet } from './EditPet';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet, petsFixture, PetType } from '@pets/types';
+import { IPet, petsFixture, PetType } from '@pet-tracker/types';
 import { RootState } from 'common/reducer';
 import { Route } from 'react-router-dom';
 import { updatePet } from '../pets.slice';

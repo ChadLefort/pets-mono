@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { condition, error, isFetching, State as CommonState } from '@pets/utils';
+import { condition, error, isFetching, State as CommonState } from '@pet-tracker/utils';
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { IPet, PetsWebSocketActions, PetType } from '@pets/types';
+import { IPet, PetsWebSocketActions, PetType } from '@pet-tracker/types';
 import { RootState } from '../../common/reducer';
 
 const name = 'lib/pets/core';

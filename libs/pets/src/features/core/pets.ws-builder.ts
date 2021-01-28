@@ -1,6 +1,6 @@
 import { fetchNewPets } from './pets.slice';
-import { IPet, PetsWebSocketActions } from '@pets/types';
-import { websocketBuilder } from '@pets/utils';
+import { IPet, PetsWebSocketActions } from '@pet-tracker/types';
+import { websocketBuilder } from '@pet-tracker/utils';
 
 export const petsWebsocketBuilder = websocketBuilder().add(
   PetsWebSocketActions.NewPet,

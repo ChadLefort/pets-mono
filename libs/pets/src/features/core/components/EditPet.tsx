@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
-import { ErrorIcon } from '@pets/common-ui';
-import { IPet, PetType } from '@pets/types';
+import { ErrorIcon } from '@pet-tracker/common-ui';
+import { IPet, PetType } from '@pet-tracker/types';
 import { PetForm } from '../../../common/Form';
 import { petsSelectors, updatePet } from '../pets.slice';
 import { useAppDispatch, useTypedSelector } from '../../../common/reducer';

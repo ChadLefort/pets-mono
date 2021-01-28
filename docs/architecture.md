@@ -69,7 +69,7 @@ For example:
 - We should import this into our `cats` application's root reducer like so:
 
 ```javascript
-import { petsRootReducer } from '@pets/pets';
+import { petsRootReducer } from '@pet-tracker/pets';
 
 export const reducer = {
   ...petsRootReducer

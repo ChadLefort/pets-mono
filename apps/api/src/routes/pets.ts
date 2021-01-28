@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { petsFixture, PetType } from '@pets/types';
+import { petsFixture, PetType } from '@pet-tracker/types';
 
 export const pets = () => {
   const router = express.Router();

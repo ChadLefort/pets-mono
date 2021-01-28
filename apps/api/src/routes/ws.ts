@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { Pets } from '../services/pets';
-import { PetsWebSocketActions } from '@pets/types';
+import { PetsWebSocketActions } from '@pet-tracker/types';
 
 export const ws = () => {
   const router = express.Router();

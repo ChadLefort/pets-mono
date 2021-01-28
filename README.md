@@ -40,7 +40,7 @@ Run `nx generate my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
-Libraries are sharable across libraries and applications. They can be imported from `@pets/mylib`.
+Libraries are sharable across libraries and applications. They can be imported from `@pet-tracker/mylib`.
 
 ## Further help
 

@@ -10,9 +10,9 @@ import {
   Paper,
   Theme
 } from '@material-ui/core';
-import { ErrorIcon } from '@pets/common-ui';
+import { ErrorIcon } from '@pet-tracker/common-ui';
 import { petsSelectors } from '../pets.slice';
-import { PetType } from '@pets/types';
+import { PetType } from '@pet-tracker/types';
 import { useFetchPets } from '../hooks/useFetchPets';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../../../common/reducer';

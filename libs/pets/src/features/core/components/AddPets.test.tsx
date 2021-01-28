@@ -5,7 +5,7 @@ import { actWithReturn, getActionResult, renderWithProviders } from 'utils/test-
 import { addPet, initialState } from '../pets.slice';
 import { AddPets } from './AddPets';
 import { fireEvent, screen } from '@testing-library/react';
-import { IPet, PetType } from '@pets/types';
+import { IPet, PetType } from '@pet-tracker/types';
 
 const axiosMock = new MockAdapter(axios);
 

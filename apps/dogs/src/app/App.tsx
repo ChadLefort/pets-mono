@@ -1,7 +1,7 @@
 import React from 'react';
-import { Auth } from '@pets/auth';
+import { Auth } from '@pet-tracker/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Layout, Theme } from '@pets/common-ui';
+import { Layout, Theme } from '@pet-tracker/common-ui';
 import { Provider } from 'react-redux';
 import { red } from '@material-ui/core/colors';
 import { Routes } from './Routes';

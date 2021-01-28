@@ -1,6 +1,6 @@
 import * as faker from 'faker';
 import * as ws from 'ws';
-import { PetsWebSocketActions } from '@pets/types';
+import { PetsWebSocketActions } from '@pet-tracker/types';
 
 export class Pets {
   private petInterval?: NodeJS.Timeout;
