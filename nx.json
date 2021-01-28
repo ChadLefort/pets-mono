@@ -18,13 +18,7 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e",
-          "build-storybook"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"]
       }
     }
   },
@@ -46,20 +40,19 @@
       "tags": [],
       "implicitDependencies": ["cats"]
     },
-    "dogs": {
-      "tags": []
-    },
-    "dogs-e2e": {
-      "tags": [],
-      "implicitDependencies": ["dogs"]
-    },
     "common-ui": {
       "tags": []
     },
-    "core": {
+    "types": {
       "tags": []
     },
-    "types": {
+    "pets": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "utils": {
       "tags": []
     }
   }

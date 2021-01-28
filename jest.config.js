@@ -8,5 +8,8 @@ module.exports = {
     '<rootDir>/apps/birds',
     '<rootDir>/apps/api',
     '<rootDir>/libs/types',
-  ],
+    '<rootDir>/libs/pets',
+    '<rootDir>/libs/auth',
+    '<rootDir>/libs/utils'
+  ]
 };

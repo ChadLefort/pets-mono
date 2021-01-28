@@ -9,7 +9,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
@@ -34,12 +36,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
+          "outputs": [
+            "coverage/apps/api"
+          ],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
@@ -54,7 +60,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/birds",
             "index": "apps/birds/src/index.html",
@@ -101,19 +109,26 @@
         "start": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve birds", "nx serve api"],
+            "commands": [
+              "nx serve birds",
+              "nx serve api"
+            ],
             "parallel": true
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/birds/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/birds/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/birds"],
+          "outputs": [
+            "coverage/apps/birds"
+          ],
           "options": {
             "jestConfig": "apps/birds/jest.config.js",
             "passWithNoTests": true
@@ -142,7 +157,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/birds-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/birds-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -154,7 +171,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/cats",
             "index": "apps/cats/src/index.html",
@@ -201,19 +220,26 @@
         "start": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve cats", "npm run json-server"],
+            "commands": [
+              "nx serve cats",
+              "npm run json-server"
+            ],
             "parallel": true
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cats/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/cats/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/cats"],
+          "outputs": [
+            "coverage/apps/cats"
+          ],
           "options": {
             "jestConfig": "apps/cats/jest.config.js",
             "passWithNoTests": true
@@ -242,107 +268,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/cats-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "dogs": {
-      "root": "apps/dogs",
-      "sourceRoot": "apps/dogs/src",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/dogs",
-            "index": "apps/dogs/src/index.html",
-            "main": "apps/dogs/src/main.tsx",
-            "polyfills": "apps/dogs/src/polyfills.ts",
-            "tsConfig": "apps/dogs/tsconfig.app.json",
-            "assets": [],
-            "styles": [],
-            "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "dogs:build",
-            "proxyConfig": "./proxy.conf.json"
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "dogs:build:production"
-            }
-          }
-        },
-        "start": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": ["nx serve dogs", "npm run json-server"],
-            "parallel": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/dogs/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dogs"],
-          "options": {
-            "jestConfig": "apps/dogs/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "dogs-e2e": {
-      "root": "apps/dogs-e2e",
-      "sourceRoot": "apps/dogs-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/dogs-e2e/cypress.json",
-            "tsConfig": "apps/dogs-e2e/tsconfig.e2e.json",
-            "devServerTarget": "dogs:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "dogs:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/dogs-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/cats-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -355,18 +283,26 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/common-ui/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/common-ui/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/common-ui",
             "tsConfig": "libs/common-ui/tsconfig.lib.json",
             "project": "libs/common-ui/package.json",
             "entryFile": "libs/common-ui/src/index.ts",
-            "external": ["react", "react-dom", "react-is"],
+            "external": [
+              "react",
+              "react-dom",
+              "react-is"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -380,7 +316,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/common-ui"],
+          "outputs": [
+            "coverage/libs/common-ui"
+          ],
           "options": {
             "jestConfig": "libs/common-ui/jest.config.js",
             "passWithNoTests": true
@@ -418,26 +356,74 @@
         }
       }
     },
-    "core": {
-      "root": "libs/core",
-      "sourceRoot": "libs/core/src",
+    "types": {
+      "root": "libs/types",
+      "sourceRoot": "libs/types/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/core/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/types/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/types"
+          ],
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/types",
+            "tsConfig": "libs/types/tsconfig.lib.json",
+            "packageJson": "libs/types/package.json",
+            "main": "libs/types/src/index.ts",
+            "assets": [
+              "libs/types/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "pets": {
+      "root": "libs/pets",
+      "sourceRoot": "libs/pets/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/pets/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
           "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
-            "outputPath": "dist/libs/core",
-            "tsConfig": "libs/core/tsconfig.lib.json",
-            "project": "libs/core/package.json",
-            "entryFile": "libs/core/src/index.ts",
-            "external": ["react", "react-dom"],
+            "outputPath": "dist/libs/pets",
+            "tsConfig": "libs/pets/tsconfig.lib.json",
+            "project": "libs/pets/package.json",
+            "entryFile": "libs/pets/src/index.ts",
+            "external": [
+              "react",
+              "react-dom",
+              "react-is"
+            ],
             "babelConfig": "@nrwl/react/plugins/bundle-babel",
             "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
             "assets": [
@@ -451,42 +437,142 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/core"],
+          "outputs": [
+            "coverage/libs/pets"
+          ],
           "options": {
-            "jestConfig": "libs/core/jest.config.js",
+            "jestConfig": "libs/pets/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/pets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/pets",
+            "config": {
+              "configFolder": "libs/pets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }
     },
-    "types": {
-      "root": "libs/types",
-      "sourceRoot": "libs/types/src",
+    "auth": {
+      "root": "libs/auth",
+      "sourceRoot": "libs/auth/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/types/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/auth/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/auth",
+            "tsConfig": "libs/auth/tsconfig.lib.json",
+            "project": "libs/auth/package.json",
+            "entryFile": "libs/auth/src/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/types"],
+          "outputs": [
+            "coverage/libs/auth"
+          ],
           "options": {
-            "jestConfig": "libs/types/jest.config.js",
+            "jestConfig": "libs/auth/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/utils/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "build": {
-          "executor": "@nrwl/node:package",
-          "outputs": ["{options.outputPath}"],
+          "executor": "@nrwl/web:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
-            "outputPath": "dist/libs/types",
-            "tsConfig": "libs/types/tsconfig.lib.json",
-            "packageJson": "libs/types/package.json",
-            "main": "libs/types/src/index.ts",
-            "assets": ["libs/types/*.md"]
+            "outputPath": "dist/libs/utils",
+            "tsConfig": "libs/utils/tsconfig.lib.json",
+            "project": "libs/utils/package.json",
+            "entryFile": "libs/utils/src/index.ts",
+            "external": [
+              "react",
+              "react-dom"
+            ],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/utils"
+          ],
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

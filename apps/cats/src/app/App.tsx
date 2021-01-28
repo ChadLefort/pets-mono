@@ -1,5 +1,5 @@
 import React from 'react';
-import { Auth } from '@pets/core';
+import { Auth } from '@pets/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from '@pets/common-ui';
 import { orange } from '@material-ui/core/colors';

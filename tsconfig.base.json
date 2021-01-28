@@ -17,8 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@pets/common-ui": ["../../../libs/common-ui/src/index.ts"],
-      "@pets/core": ["../../../libs/core/src/index.ts"],
-      "@pets/types": ["../../../libs/types/src/index.ts"]
+      "@pets/types": ["../../../libs/types/src/index.ts"],
+      "@pets/pets": ["../../../libs/pets/src/index.ts"],
+      "@pets/auth": ["../../../libs/auth/src/index.ts"],
+      "@pets/utils": ["../../../libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
