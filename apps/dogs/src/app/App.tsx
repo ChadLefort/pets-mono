@@ -1,32 +1,22 @@
 import React from 'react';
-import { Auth } from '@pets/core';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
-import { Layout } from '@pets/common-ui';
+import { Auth } from '@pets/auth';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Layout, Theme } from '@pets/common-ui';
 import { Provider } from 'react-redux';
-import { QueryCache, ReactQueryCacheProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query-devtools';
+import { red } from '@material-ui/core/colors';
 import { Routes } from './Routes';
 import { store } from './store';
-import { teal } from '@material-ui/core/colors';
-import { Theme } from '@pets/common-ui';
 
-export const App: React.FC = () => {
-  const queryCache = new QueryCache();
-
-  return (
-    <Provider store={store}>
-      <ReactQueryCacheProvider queryCache={queryCache}>
-        <ReactQueryDevtools />
-        <Router>
-          <Theme primaryColor={teal[900]}>
-            <Auth>
-              <Layout title="Dogs">
-                <Routes />
-              </Layout>
-            </Auth>
-          </Theme>
-        </Router>
-      </ReactQueryCacheProvider>
-    </Provider>
-  );
-};
+export const App: React.FC = () => (
+  <Provider store={store}>
+    <Router>
+      <Theme primaryColor={red[400]}>
+        <Auth>
+          <Layout title="Dogs">
+            <Routes />
+          </Layout>
+        </Auth>
+      </Theme>
+    </Router>
+  </Provider>
+);

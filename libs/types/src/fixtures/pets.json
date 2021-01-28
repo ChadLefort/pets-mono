@@ -28,11 +28,5 @@
     "name": "Chloe",
     "age": "8",
     "type": "Cat"
-  },
-  {
-    "id": "bbe4a217-418e-4643-9cd6-5e731ab4a8fc",
-    "name": "Tweety",
-    "age": "3",
-    "type": "Bird"
   }
 ]

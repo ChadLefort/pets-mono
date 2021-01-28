@@ -1,9 +1,17 @@
 import { Action } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { petsWebsocketBuilder } from '@pets/pets';
 import { reducer } from './reducer';
 import { ThunkAction } from 'redux-thunk';
+import { websocketMiddleware } from '@pets/utils';
 
-export const store = configureStore({ reducer });
+const connection = new WebSocket('ws://localhost:4200/api/ws/pets');
+
+export const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(websocketMiddleware({ connection, websocketBuilder: petsWebsocketBuilder }))
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

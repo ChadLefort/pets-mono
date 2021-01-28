@@ -18,26 +18,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e",
-          "build-storybook"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e", "build-storybook"]
       }
     }
   },
   "projects": {
     "api": {
       "tags": []
-    },
-    "birds": {
-      "tags": []
-    },
-    "birds-e2e": {
-      "tags": [],
-      "implicitDependencies": ["birds"]
     },
     "cats": {
       "tags": []
@@ -53,13 +40,19 @@
       "tags": [],
       "implicitDependencies": ["dogs"]
     },
+    "auth": {
+      "tags": []
+    },
     "common-ui": {
       "tags": []
     },
-    "core": {
+    "pets": {
       "tags": []
     },
     "types": {
+      "tags": []
+    },
+    "utils": {
       "tags": []
     }
   }

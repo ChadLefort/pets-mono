@@ -1,6 +1,0 @@
-export interface IPet {
-  id: number;
-  name: string;
-  age: string;
-  type: 'Cat' | 'Dog' | 'Bird' | 'Other';
-}

@@ -1,4 +1,3 @@
-export * from './common/components/Layout';
-export * from './common/components/ErrorIcon';
-export * from './common/components/Theme';
-export * from './common/components/Form';
+export * from './components/Layout';
+export * from './components/ErrorIcon';
+export * from './components/Theme';
