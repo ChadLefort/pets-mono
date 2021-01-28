@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from './Layout';
+import { withTheme } from '@pet-tracker/utils';
 
 export default {
   component: Layout,
-  title: 'Layout'
+  title: 'Layout',
+  decorators: [withTheme]
 };
 
-export const primary = () => {
-  return (
-    <Router>
-      <Layout title="Some App" />
-    </Router>
-  );
-};
+export const primary = () => (
+  <Router>
+    <Layout title="Some App" />
+  </Router>
+);
