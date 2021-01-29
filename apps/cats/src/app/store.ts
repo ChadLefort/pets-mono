@@ -1,10 +1,10 @@
-import { Action } from 'redux';
+import { authRootReducer } from '@pet-tracker/auth';
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer } from './reducer';
-import { ThunkAction } from 'redux-thunk';
+import { petsRootReducer } from '@pet-tracker/pets';
 
-export const store = configureStore({ reducer });
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export type AppThunk<ReturnType = Promise<void>> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export const store = configureStore({
+  reducer: {
+    ...authRootReducer,
+    ...petsRootReducer
+  }
+});

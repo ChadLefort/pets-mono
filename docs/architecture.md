@@ -17,7 +17,6 @@
  ┃ ┣ 📂 src
  ┃ ┃ ┣ 📂 app
  ┃ ┃ ┃ ┣ 📜 App.tsx
- ┃ ┃ ┃ ┣ 📜 reducer.ts
  ┃ ┃ ┃ ┣ 📜 Routes.tsx
  ┃ ┃ ┃ ┗ 📜 store.ts
  ┗ ...other apps
@@ -39,13 +38,15 @@
 - Apps contain all of our applications that would get deployed
   - Should have an app folder that describes all of the application's routes and reducers
   - They should not contain any components, services, or business logic and only wire up libraries
+  - They are basically just the glue that holds everything together
 - Libs contain code that should be shared with and build up applications
   - Can contain a common folder that can have redux reducer and shared components that relate only to the library
   - Most libraries should be split by business domain and have a set of features that relates to that library
     - A feature should be a set of components, hooks, and a redux slice
     - Features should not be nested inside each other
     - It might take multiple features to actually make up a whole view
-  - Common-ui would just be presentational components (dumb components) or components that just use local state
+  - Common-ui would just be shared presentational components (dumb components) or components that just use local state
+    - Usually components are created in their respected library, but once they need to be shared between multiple libraries they should be made more generic and put in common-ui
   - Utilities library for maybe test or helper functions
 
 ### Component Folder Structure

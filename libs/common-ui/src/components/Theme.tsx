@@ -1,6 +1,8 @@
+import CssBaseline from '@material-ui/core/CssBaseline';
 import React, { useEffect, useState } from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { blue, grey } from '@material-ui/core/colors';
-import { createMuiTheme, CssBaseline, responsiveFontSizes, ThemeProvider, useMediaQuery } from '@material-ui/core';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 type Theme = 'light' | 'dark';
 type ThemeContext = { theme: Theme; toggleTheme: () => void };

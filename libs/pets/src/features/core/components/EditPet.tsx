@@ -1,5 +1,10 @@
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Paper from '@material-ui/core/Paper';
 import React from 'react';
-import { Container, createStyles, Grid, LinearProgress, makeStyles, Paper, Theme, Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { ErrorIcon } from '@pet-tracker/common-ui';
 import { IPet, PetType } from '@pet-tracker/types';
 import { PetForm } from '../../../common/Form';

@@ -1,15 +1,11 @@
+import Container from '@material-ui/core/Container';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
 import React from 'react';
-import {
-  Container,
-  createStyles,
-  LinearProgress,
-  List,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  Paper,
-  Theme
-} from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { ErrorIcon } from '@pet-tracker/common-ui';
 import { petsSelectors } from '../pets.slice';
 import { PetType } from '@pet-tracker/types';
