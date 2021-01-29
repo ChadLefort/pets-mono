@@ -4,7 +4,8 @@ import { petsFixture, PetType } from '@pet-tracker/types';
 import { petsRootReducer, RootState } from '../../../common/reducer';
 import { Route } from 'react-router-dom';
 import { ViewPet } from './ViewPet';
-import { withMock, withProvider, withRouter, withTheme } from '@pet-tracker/utils';
+import { withMock, withProvider, withRouter } from '@pet-tracker/utils';
+import { withTheme } from '@pet-tracker/common-ui';
 
 const mock = (axiosMock: MockAdapter) => {
   axiosMock.onGet('/api/pets').reply(200, petsFixture);

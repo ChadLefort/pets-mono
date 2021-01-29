@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: MuiTheme) =>
 );
 
 type Props = {
-  nav: React.ReactNode;
+  nav?: React.ReactNode;
 };
 
 export const Layout: React.FC<Props> = ({ nav, children }) => {

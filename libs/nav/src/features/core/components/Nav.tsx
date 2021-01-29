@@ -63,7 +63,6 @@ export const Nav: React.FC<Props> = ({ title }) => {
               {title}
             </Typography>
           </Box>
-
           <FormControlLabel
             control={<Switch checked={theme === 'dark'} onClick={toggleTheme} name="theme" />}
             label={theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}

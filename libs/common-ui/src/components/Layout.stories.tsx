@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout } from './Layout';
-import { withTheme } from '@pet-tracker/utils';
+import { withTheme } from '../utils/storybook-decorators';
 
 export default {
   component: Layout,
@@ -9,8 +8,4 @@ export default {
   decorators: [withTheme]
 };
 
-export const primary = () => (
-  <Router>
-    <Layout title="Some App" />
-  </Router>
-);
+export const primary = () => <Layout />;

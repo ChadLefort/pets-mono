@@ -1,21 +1,9 @@
-/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React, { useEffect } from 'react';
 import { configureStore, DeepPartial, Reducer } from '@reduxjs/toolkit';
-import { Layout, Theme } from '@pet-tracker/common-ui';
 import { MemoryRouter } from 'react-router-dom';
-import { Nav } from '@pet-tracker/nav';
-import { orange } from '@material-ui/core/colors';
 import { Provider } from 'react-redux';
-
-export const withTheme = (story: () => React.ReactNode) => <Theme primaryColor={orange[400]}>{story()}</Theme>;
-
-export const withLayoutAndTheme = (story: () => React.ReactNode) => (
-  <Theme primaryColor={orange[400]}>
-    <Layout nav={<Nav title="Storybook" />}>{story()}</Layout>
-  </Theme>
-);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withProvider<T, R extends Reducer = any>(

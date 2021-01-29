@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorIcon } from './ErrorIcon';
-import { withTheme } from '@pet-tracker/utils';
+import { withTheme } from '../utils/storybook-decorators';
 
 export default {
   component: ErrorIcon,

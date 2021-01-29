@@ -2,7 +2,8 @@ import React, { Reducer } from 'react';
 import { AddPets } from './AddPets';
 import { petsRootReducer, RootState } from '../../../common/reducer';
 import { PetType } from '@pet-tracker/types';
-import { withProvider, withTheme } from '@pet-tracker/utils';
+import { withProvider } from '@pet-tracker/utils';
+import { withTheme } from '@pet-tracker/common-ui';
 
 export default {
   component: AddPets,
