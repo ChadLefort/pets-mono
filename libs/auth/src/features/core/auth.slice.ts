@@ -1,11 +1,24 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { error, isFetching, State as CommonState } from '@pet-tracker/utils';
 
 const name = 'lib/auth/core';
 
-export const fetchAuthToken = createAsyncThunk(`${name}/fetchToken`, async () => {
-  const { data } = await axios.get<{ ssoToken: string | null }>('/api/auth');
+export const axiosInterceptor = (ssoToken: string, rejectWithValue: (error: AxiosError) => void) => {
+  axios.interceptors.request.use(
+    (config) => {
+      config.headers.common.Authorization = `Bearer ${ssoToken}`;
+      return config;
+    },
+    (error: AxiosError) => rejectWithValue(error)
+  );
+};
+
+export const fetchAuthToken = createAsyncThunk(`${name}/fetchToken`, async (_, { rejectWithValue }) => {
+  const { data } = await axios.get<{ ssoToken: string }>('/api/auth');
+
+  axiosInterceptor(data.ssoToken, (error) => rejectWithValue(error));
+
   return data.ssoToken;
 });
 
