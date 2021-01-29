@@ -6,6 +6,7 @@
     "paths": {
       "@pet-tracker/auth": ["./libs/auth/src/index.ts"],
       "@pet-tracker/common-ui": ["./libs/common-ui/src/index.ts"],
+      "@pet-tracker/nav": ["./libs/nav/src/index.ts"],
       "@pet-tracker/pets": ["./libs/pets/src/index.ts"],
       "@pet-tracker/types": ["./libs/types/src/index.ts"],
       "@pet-tracker/utils": ["./libs/utils/src/index.ts"]

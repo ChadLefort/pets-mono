@@ -2,6 +2,7 @@ import React from 'react';
 import { Auth } from '@pet-tracker/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout, Theme } from '@pet-tracker/common-ui';
+import { Nav } from '@pet-tracker/nav';
 import { Provider } from 'react-redux';
 import { red } from '@material-ui/core/colors';
 import { Routes } from './Routes';
@@ -12,7 +13,7 @@ export const App: React.FC = () => (
     <Router>
       <Theme primaryColor={red[400]}>
         <Auth>
-          <Layout title="Dogs">
+          <Layout nav={<Nav title="Dogs" />}>
             <Routes />
           </Layout>
         </Auth>

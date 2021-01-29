@@ -4,13 +4,17 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Drawer from '@material-ui/core/Drawer';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import PetsIcon from '@material-ui/icons/Pets';
 import React, { useContext } from 'react';
 import Switch from '@material-ui/core/Switch';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { ThemeContext } from './Theme';
+import { NavLink } from 'react-router-dom';
+import { ThemeContext } from '@pet-tracker/common-ui';
 
 const drawerWidth = 240;
 
@@ -43,7 +47,7 @@ type Props = {
   title: string;
 };
 
-export const Nav: React.FC<Props> = ({ title, children }) => {
+export const Nav: React.FC<Props> = ({ title }) => {
   const classes = useStyles();
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -74,7 +78,16 @@ export const Nav: React.FC<Props> = ({ title, children }) => {
         }}
       >
         <Toolbar />
-        <Box className={classes.drawerContainer}>{children}</Box>
+        <Box className={classes.drawerContainer}>
+          <List>
+            <ListItem button component={NavLink} to="/" exact activeClassName="Mui-selected">
+              <ListItemText primary="View Pets" />
+            </ListItem>
+            <ListItem button component={NavLink} to="/add" exact activeClassName="Mui-selected">
+              <ListItemText primary="Add Pets" />
+            </ListItem>
+          </List>
+        </Box>
       </Drawer>
     </React.Fragment>
   );

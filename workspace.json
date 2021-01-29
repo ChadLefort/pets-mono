@@ -371,6 +371,47 @@
         }
       }
     },
+    "nav": {
+      "root": "libs/nav",
+      "sourceRoot": "libs/nav/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/nav/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/nav",
+            "tsConfig": "libs/nav/tsconfig.lib.json",
+            "project": "libs/nav/package.json",
+            "entryFile": "libs/nav/src/index.ts",
+            "external": ["react", "react-dom", "react-is"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [
+              {
+                "glob": "README.md",
+                "input": ".",
+                "output": "."
+              }
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nav"],
+          "options": {
+            "jestConfig": "libs/nav/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "pets": {
       "root": "libs/pets",
       "sourceRoot": "libs/pets/src",

@@ -7,6 +7,7 @@ module.exports = {
     '<rootDir>/libs/common-ui',
     '<rootDir>/libs/pets',
     '<rootDir>/libs/types',
-    '<rootDir>/libs/utils'
+    '<rootDir>/libs/utils',
+    '<rootDir>/libs/nav'
   ]
 };
